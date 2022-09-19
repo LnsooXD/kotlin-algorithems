@@ -68,4 +68,88 @@ class ThreeSum {
         }
         return res
     }
+
+    fun threeSumTwoPoints(nums: IntArray): List<List<Int>> {
+        if (nums.size < 3) {
+            return listOf()
+        }
+
+        val res = mutableListOf<List<Int>>()
+        nums.sort()
+
+        // a + b + c = 0
+        for (i in 0 until nums.size - 2) {
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue
+            }
+
+            // 求 b + c = -a
+
+            val a = nums[i]
+
+            var j = i + 1
+            var k = nums.size - 1
+
+            while (j < k) { // b < c
+                val b = nums[j]
+                val c = nums[k]
+                val total = a + b + c
+
+                if (total == 0) {
+                    res.add(listOf(a, b, c))
+                }
+
+                if (total <= 0) {
+                    while(j < k && nums[j] == b) {
+                        j++
+                    }
+                }
+
+                if (total >= 0) {
+                    while(j < k && nums[k] == c) {
+                        k--
+                    }
+                }
+            }
+        }
+        return res
+    }
+
+    fun threeSumHash(nums: IntArray): List<List<Int>> {
+        if (nums.size < 3) {
+            return listOf()
+        }
+        val res = mutableListOf<List<Int>>()
+        val map = hashMapOf<Int, Boolean>()
+        // 排序， 方便后面排重
+        nums.sort()
+
+        // a + b + c = 0
+        for (i in 0 until nums.size - 2) {
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue
+            }
+            val a = nums[i]
+            // a 固定为常数, 令 A = a, 降维为两数之和
+
+            // b + c = -A
+            //
+            // b = -A - c
+            // c = -A -b
+
+            map.clear()
+            for (j in i + 1 until nums.size) {
+                val count = map[nums[j]]
+                if (count != null) { // nums[j] is c, b = -A - c, b < c, 多 c 情况
+                    if (count == true) { // 同一个 c 只使用一次
+                        res.add(listOf(a, -a - nums[j], nums[j]))
+                        map[nums[j]] = false
+                    }
+                } else {  // nums[j] is b, c = -A - b, b < c (由顺序数组 + hashmap 保证: 因为优先入 map， 所以如 map 的一定是大数)
+                    map[-a - nums[j]] = true
+                }
+            }
+        }
+        return res
+    }
 }
