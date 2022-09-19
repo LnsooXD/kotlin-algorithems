@@ -2,7 +2,7 @@ package leetcode
 
 import java.util.*
 
-// https://leetcode.cn/problems/3sum/
+// https://leetcode.cn/problems/4sum/
 
 class FourSum {
 
