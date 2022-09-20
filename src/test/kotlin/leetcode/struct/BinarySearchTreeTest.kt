@@ -1,5 +1,6 @@
 package leetcode.struct
 
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 internal class BinarySearchTreeTest {
@@ -13,7 +14,7 @@ internal class BinarySearchTreeTest {
         }
 
         val dst = binarySearchTree.inorder()
-        println(dst.toList())
+        assertThat(dst).isEqualTo(intArrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9))
     }
 
 }
