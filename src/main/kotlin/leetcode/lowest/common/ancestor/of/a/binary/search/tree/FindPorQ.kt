@@ -14,6 +14,8 @@ class FindPorQ : LowestCommonAncestor {
         if (root == null) {
             return null
         }
+
+        // 利用函数的语义：去左子树或右子树找
         return if (pv < root.`val` && qv < root.`val`) {
             lowestCommonAncestor(root.left, pv, qv)
         } else if (pv > root.`val` && qv > root.`val`) {
