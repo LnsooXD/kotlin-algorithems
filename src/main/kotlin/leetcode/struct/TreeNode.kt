@@ -27,6 +27,24 @@ fun inorder(tree: TreeNode?): IntArray {
     return list.toIntArray()
 }
 
+fun preorder(tree: TreeNode?): IntArray {
+    if (tree == null) {
+        return intArrayOf()
+    }
+    val list = mutableListOf<Int>()
+    preorder(tree, list)
+    return list.toIntArray()
+}
+
+fun postorder(tree: TreeNode?): IntArray {
+    if (tree == null) {
+        return intArrayOf()
+    }
+    val list = mutableListOf<Int>()
+    postorder(tree, list)
+    return list.toIntArray()
+}
+
 private fun inorder(tree: TreeNode?, list: MutableList<Int>) {
     if (tree == null) {
         return
@@ -36,4 +54,24 @@ private fun inorder(tree: TreeNode?, list: MutableList<Int>) {
     list.add(tree.`val`)
     inorder(tree.right, list)
 }
+
+private fun preorder(tree: TreeNode?, list: MutableList<Int>) {
+    if (tree == null) {
+        return
+    }
+    list.add(tree.`val`)
+    preorder(tree.left, list)
+    preorder(tree.right, list)
+}
+
+
+private fun postorder(tree: TreeNode?, list: MutableList<Int>) {
+    if (tree == null) {
+        return
+    }
+    postorder(tree.left, list)
+    postorder(tree.right, list)
+    list.add(tree.`val`)
+}
+
 
