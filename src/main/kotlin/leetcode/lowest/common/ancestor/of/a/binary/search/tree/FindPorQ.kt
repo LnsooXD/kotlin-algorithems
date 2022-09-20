@@ -20,7 +20,7 @@ class FindPorQ : LowestCommonAncestor {
             lowestCommonAncestor(root.left, pv, qv)
         } else if (pv > root.`val` && qv > root.`val`) {
             lowestCommonAncestor(root.right, pv, qv)
-        } else {
+        } else { // 左右都有， 说明 root 是且仅是最近公共祖先
             root
         }
     }
