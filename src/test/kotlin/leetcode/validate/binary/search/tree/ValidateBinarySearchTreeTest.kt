@@ -1,4 +1,4 @@
-package leetcode
+package leetcode.validate.binary.search.tree
 
 import leetcode.struct.treeOf
 import org.assertj.core.api.Assertions.assertThat
@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 
 internal class ValidateBinarySearchTreeTest {
 
-    private val core = ValidateBinarySearchTree()
+    private val core: ValidateBinarySearchTree = Inorder()
 
     @Test
     fun test01() {
@@ -43,5 +43,11 @@ internal class ValidateBinarySearchTreeTest {
         assertThat(res).isFalse()
     }
 
-//    [32,26,47,19,null,null,56,null,27]
+    @Test
+    fun test06() {
+        val root = treeOf(32, 26, 47, 19, null, null, 56, null, 27)
+        val res = this.core.isValidBST(root)
+        assertThat(res).isFalse()
+    }
+
 }
