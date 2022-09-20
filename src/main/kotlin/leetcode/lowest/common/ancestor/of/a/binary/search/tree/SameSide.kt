@@ -12,7 +12,7 @@ class SameSide : LowestCommonAncestor {
                 ancestor.left
             } else if (ancestor.`val` < pv && ancestor.`val` < qv) {
                 ancestor.right
-            } else {
+            } else { // q, p 分别来自两个子树
                 break
             }
         }
