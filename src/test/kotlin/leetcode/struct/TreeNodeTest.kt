@@ -15,6 +15,5 @@ internal class TreeNodeTest {
         )
         val inorder = inorder(tree)
         assertThat(inorder).isEqualTo(intArrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9))
-
     }
 }
