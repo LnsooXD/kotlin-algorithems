@@ -22,16 +22,18 @@ fun inorder(tree: TreeNode?): IntArray {
     if (tree == null) {
         return intArrayOf()
     }
+    val list = mutableListOf<Int>()
+    inorder(tree, list)
+    return list.toIntArray()
+}
 
-    val left = inorder(tree.left)
-    val right = inorder(tree.right)
+private fun inorder(tree: TreeNode?, list: MutableList<Int>) {
+    if (tree == null) {
+        return
+    }
 
-    val size = left.size + 1 + right.size
-    val res = IntArray(size)
-
-    System.arraycopy(left, 0, res, 0, left.size)
-    res[left.size] = tree.`val`
-    System.arraycopy(right, 0, res, left.size + 1, right.size)
-    return res
+    inorder(tree.left, list)
+    list.add(tree.`val`)
+    inorder(tree.right, list)
 }
 
