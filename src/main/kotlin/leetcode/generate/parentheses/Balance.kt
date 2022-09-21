@@ -13,12 +13,11 @@ class Balance : GenerateParentheses {
             results.add(result)
             return
         }
-
-        if (right < left || left < 0) {
-            return
+        if (left > 0) {
+            generateParenthesis(results, "$result(", left - 1, right)
         }
-
-        generateParenthesis(results, "$result(", left - 1, right)
-        generateParenthesis(results, "$result)", left, right - 1)
+        if (right > left) {
+            generateParenthesis(results, "$result)", left, right - 1)
+        }
     }
 }
