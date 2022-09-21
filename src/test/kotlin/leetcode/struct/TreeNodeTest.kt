@@ -40,4 +40,27 @@ internal class TreeNodeTest {
         val postorder = postorder(tree)
         assertThat(postorder).isEqualTo(intArrayOf(8, 4, 5, 2, 6, 9, 7, 3, 1))
     }
+
+    @Test
+    fun testBFS() {
+        val tree = treeOf(
+            1,/**/
+            2, 3, /**/
+            4, 5, 6, 7,/**/
+        )
+        val res = bfs(tree)
+        println(res.toList())
+    }
+
+    @Test
+    fun testBFSFillWithNulls() {
+        val tree = treeOf(
+            1,/**/
+            2, 3, /**/
+            4, 5, 6, 7,/**/
+            null, 8, null, null, null, null, 9, null
+        )
+        val res = bfsFillWithNulls(tree)
+        println(res.toList())
+    }
 }

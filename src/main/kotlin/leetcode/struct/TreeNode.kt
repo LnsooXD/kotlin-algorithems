@@ -1,8 +1,14 @@
 package leetcode.struct
 
+import java.util.*
+
 class TreeNode(var `val`: Int) {
     var left: TreeNode? = null
     var right: TreeNode? = null
+
+    override fun toString(): String {
+        return this.`val`.toString()
+    }
 }
 
 fun treeOf(vararg elements: Int?): TreeNode? = if (elements.isNotEmpty() || elements[0] == null) {
@@ -17,6 +23,63 @@ fun nodeOf(elements: Array<out Int?>, index: Int): TreeNode? = if (index < eleme
         node
     }
 } else null
+
+fun bfs(tree: TreeNode?): Array<TreeNode> {
+    if (tree == null) {
+        return emptyArray()
+    }
+
+    val queue: Queue<TreeNode> = LinkedList(listOf(tree))
+    val visited = mutableListOf<TreeNode>()
+
+    while (queue.isNotEmpty()) {
+        val node = queue.poll()
+        visited.add(node)
+
+        node.left?.run { queue.offer(this) }
+        node.right?.run { queue.offer(this) }
+    }
+    return visited.toTypedArray()
+}
+
+fun bfsFillWithNulls(tree: TreeNode?): Array<TreeNode?> {
+    if (tree == null) {
+        return emptyArray()
+    }
+
+    val queue: Queue<TreeNode?> = LinkedList(listOf(tree))
+    val visited = mutableListOf<TreeNode?>()
+
+    var count = 0
+    var layerCount = 2
+    var nullCount = 0
+
+    val counting = { it: TreeNode? ->
+        queue.offer(it)
+        count++
+        if (it == null) {
+            nullCount++
+        }
+    }
+
+    while (queue.isNotEmpty()) {
+        val node = queue.poll()
+        visited.add(node)
+
+        node?.left.also(counting)
+        node?.right.also(counting)
+
+        if (count >= layerCount) {
+            if (nullCount >= count) {
+                break
+            }
+            count = 0
+            layerCount += layerCount
+        }
+    }
+
+    return visited.toTypedArray()
+}
 
 fun inorder(tree: TreeNode?): IntArray {
     if (tree == null) {
