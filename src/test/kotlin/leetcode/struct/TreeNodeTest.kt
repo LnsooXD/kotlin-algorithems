@@ -48,8 +48,8 @@ internal class TreeNodeTest {
             2, 3, /**/
             4, 5, 6, 7,/**/
         )
-        val res = bfs(tree)
-        println(res.toList())
+        val res = bfs(tree).map { it.`val` }.toIntArray()
+        assertThat(res).isEqualTo(intArrayOf(1, 2, 3, 4, 5, 6, 7))
     }
 
     @Test
@@ -60,7 +60,51 @@ internal class TreeNodeTest {
             4, 5, 6, 7,/**/
             null, 8, null, null, null, null, 9, null
         )
-        val res = bfsFillWithNulls(tree)
-        println(res.toList())
+        val res = bfsFillWithNulls(tree).map { it?.`val` }.toTypedArray()
+        assertThat(res).isEqualTo(
+            arrayOf(
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                null,
+                8,
+                null,
+                null,
+                null,
+                null,
+                9,
+                null
+            )
+        )
     }
+
+    @Test
+    fun testDFS() {
+        val tree = treeOf(
+            1,/**/
+            2, 3, /**/
+            4, 5, 6, 7,/**/
+            null, 8, null, null, null, null, 9, null
+        )
+        val res = dfs(tree).map { it.`val` }.toIntArray()
+        assertThat(res).isEqualTo(intArrayOf(1, 2, 4, 8, 5, 3, 6, 7, 9))
+    }
+
+    @Test
+    fun testDFSR() {
+        val tree = treeOf(
+            1,/**/
+            2, 3, /**/
+            4, 5, 6, 7,/**/
+            null, 8, null, null, null, null, 9, null
+        )
+        val res = dfsr(tree).map { it.`val` }.toIntArray()
+        assertThat(res).isEqualTo(intArrayOf(1, 2, 4, 8, 5, 3, 6, 7, 9))
+    }
+
+
 }

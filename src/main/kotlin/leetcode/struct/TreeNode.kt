@@ -81,6 +81,43 @@ fun bfsFillWithNulls(tree: TreeNode?): Array<TreeNode?> {
     return visited.toTypedArray()
 }
 
+
+fun dfs(tree: TreeNode?): Array<TreeNode> {
+    if (tree == null) {
+        return emptyArray()
+    }
+
+    val stack = Stack<TreeNode>()
+    val visited = mutableListOf<TreeNode>()
+
+    stack.push(tree)
+
+    while (stack.isNotEmpty()) {
+        val node = stack.pop()
+        visited.add(node)
+
+        node.right?.apply { stack.push(this) }
+        node.left?.apply { stack.push(this) }
+
+    }
+    return visited.toTypedArray()
+}
+
+fun dfsr(tree: TreeNode?): Array<TreeNode> {
+    if (tree == null) {
+        return emptyArray()
+    }
+    val visited = mutableListOf<TreeNode>()
+    dfsr(tree, visited)
+    return visited.toTypedArray()
+}
+
+private fun dfsr(tree: TreeNode, visited: MutableList<TreeNode>) {
+    visited.add(tree)
+    tree.left?.apply { dfsr(this, visited) }
+    tree.right?.apply { dfsr(this, visited) }
+}
+
 fun inorder(tree: TreeNode?): IntArray {
     if (tree == null) {
         return intArrayOf()
