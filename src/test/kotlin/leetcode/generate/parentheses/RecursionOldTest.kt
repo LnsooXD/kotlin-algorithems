@@ -1,10 +1,9 @@
-package leetcode
+package leetcode.generate.parentheses
 
 import org.junit.jupiter.api.Test
 
-internal class GenerateParenthesesTest {
-
-    private val core = GenerateParentheses()
+internal class RecursionOldTest {
+    private val core = RecursionOld()
 
     @Test
     fun test() {

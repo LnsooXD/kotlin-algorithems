@@ -1,10 +1,7 @@
-package leetcode
+package leetcode.generate.parentheses
 
-// https://leetcode.cn/problems/generate-parentheses/
-
-class GenerateParentheses {
-
-    fun generateParenthesis(n: Int): List<String> {
+class RecursionOld : GenerateParentheses {
+    override fun generateParenthesis(n: Int): List<String> {
         if (n <= 0) {
             return listOf("")
         }
