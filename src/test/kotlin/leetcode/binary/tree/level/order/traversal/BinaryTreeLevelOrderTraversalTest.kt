@@ -6,7 +6,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 internal class BinaryTreeLevelOrderTraversalTest {
-    private val core = BFS()
+    private val core = DFS()
 
     @Test
     fun test01() {
