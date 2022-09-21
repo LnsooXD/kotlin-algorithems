@@ -1,13 +1,12 @@
 package leetcode.binary.tree.level.order.traversal
 
 import leetcode.struct.TreeNode
-import leetcode.struct.bfs
 import leetcode.struct.treeOf
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 internal class BinaryTreeLevelOrderTraversalTest {
-    private val core = LevelBatchProcess()
+    private val core = BFS()
 
     @Test
     fun test01() {

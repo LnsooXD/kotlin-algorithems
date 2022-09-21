@@ -2,7 +2,7 @@ package leetcode.binary.tree.level.order.traversal
 
 import leetcode.struct.TreeNode
 
-class LevelBatchProcess : BinaryTreeLevelOrderTraversal {
+class BFSLevelBatchProcess : BinaryTreeLevelOrderTraversal {
 
     override fun levelOrder(root: TreeNode?): List<List<Int>> {
         if (root == null) {
