@@ -9,11 +9,11 @@ class BFS : BinaryTreeLevelOrderTraversal {
             return emptyList()
         }
 
-        val res = mutableListOf<List<Int>>()
+        val res = ArrayList<List<Int>>()
         val queue: Queue<TreeNode> = LinkedList(listOf(root))
 
         while (queue.isNotEmpty()) {
-            val levelValues = LinkedList<Int>()
+            val levelValues = ArrayList<Int>()
             for (i in 0 until queue.size) {
                 val node = queue.poll()
                 levelValues.add(node.`val`)
