@@ -7,12 +7,12 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 internal class BinaryTreeLevelOrderTraversalTest {
-    private val bfsFillNulls = BFSFillNulls()
+    private val core = LevelBatchProcess()
 
     @Test
-    fun testBFSFillNulls01() {
+    fun test01() {
         val root = treeOf(3, 9, 20, null, null, 15, 7)
-        val res = this.bfsFillNulls.levelOrder(root)
+        val res = this.core.levelOrder(root)
 
         assertThat(res).isEqualTo(
             listOf(
@@ -24,7 +24,7 @@ internal class BinaryTreeLevelOrderTraversalTest {
     }
 
     @Test
-    fun testBFSFillNulls02() {
+    fun test02() {
         val root = TreeNode(-150)
         var node = root
         for (i in -149..600) {
@@ -33,7 +33,11 @@ internal class BinaryTreeLevelOrderTraversalTest {
             node = left
         }
 
-        val res = this.bfsFillNulls.levelOrder(root)
-        println(res.toList())
+        val res = this.core.levelOrder(root)
+        val expected = mutableListOf<List<Int>>()
+        for (i in -150 .. 600) {
+            expected.add(listOf(i))
+        }
+        assertThat(res).isEqualTo(expected)
     }
 }
