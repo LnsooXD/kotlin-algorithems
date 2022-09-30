@@ -4,7 +4,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 internal class ValidSudokuTest {
-    private val core = Loop()
+    private val core = BitsWithLoop()
 
     @Test
     fun testColumns() {

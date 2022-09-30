@@ -1,13 +1,13 @@
 package leetcode.sudoku.solver
 
-import leetcode.valid.sudoku.ThreeLoops
+import leetcode.valid.sudoku.FullBits
 import leetcode.valid.sudoku.ValidSudoku
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 internal class SudokuSolverTest {
 
-    private val checker: ValidSudoku = ThreeLoops()
+    private val checker: ValidSudoku = FullBits()
 
     @Test
     fun testDFS1() {
