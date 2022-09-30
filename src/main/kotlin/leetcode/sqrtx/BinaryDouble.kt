@@ -2,8 +2,8 @@ package leetcode.sqrtx
 
 class BinaryDouble : Sqrtx<Double> {
 
-    override fun mySqrt(x: Int): Double {
-        if (x == 1) {
+    override fun mySqrt(x: Double): Double {
+        if (x == 1.0) {
             return 1.0
         }
         var left = 0.0

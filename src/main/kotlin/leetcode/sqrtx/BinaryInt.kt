@@ -26,6 +26,10 @@ class BinaryInt : Sqrtx<Int> {
             }
         }
 
+        if (left * left > x) {
+            left -= 1
+        }
+
         return left.toInt()
     }
 }

@@ -10,16 +10,16 @@ internal class BinaryTest {
 
     @Test
     fun test01() {
-        val x = 9
+        val x = 9.0
         val res = this.core.mySqrt(x)
-        assertThat(this.square(res)).isEqualTo(x)
+        assertThat(this.square(res)).isEqualTo(x.toInt())
     }
 
     @Test
     fun test02() {
-        val x = 5
+        val x = 5.0
         val res = this.core.mySqrt(x)
-        assertThat(this.square(res)).isEqualTo(x)
+        assertThat(this.square(res)).isEqualTo(x.toInt())
     }
 
     @Test
