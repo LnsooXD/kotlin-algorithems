@@ -80,5 +80,15 @@ internal class SudokuSolverTest {
             )
         )
     }
+
+    @Test
+    fun testSolvingEmpty() {
+        val solver: SudokuSolver = DFS2()
+        val board = Array(9) { CharArray(9) { '.' } }
+        solver.solveSudoku(board)
+        board.forEach {
+            println(it.toList())
+        }
+    }
 }
 
