@@ -1,6 +1,6 @@
 package leetcode.sudoku.solver
 
-class RoughDFS : SudokuSolver {
+class NaiveDFS : SudokuSolver {
 
     private val values = CharArray(9) { (it + '1'.toInt()).toChar() }
 

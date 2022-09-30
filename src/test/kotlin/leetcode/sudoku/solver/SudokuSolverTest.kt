@@ -11,27 +11,26 @@ internal class SudokuSolverTest {
 
     @Test
     fun testDFS1() {
-        this.test(NavieDFS1())
+        this.test(DFS1())
     }
 
     @Test
     fun testDFS2() {
-        this.test(NavieDFS2())
+        this.test(DFS2())
     }
 
     @Test
-    fun testRoughDFS() {
-        this.test(RoughDFS())
+    fun testNaiveDFS() {
+        this.test(NaiveDFS())
     }
 
     @Test
     fun testSolvingEmpty() {
-        val solver: SudokuSolver = NavieDFS2()
+        val solver: SudokuSolver = DFS2()
         val board = Array(9) { CharArray(9) { '.' } }
         solver.solveSudoku(board)
-        board.forEach {
-            println(it.toList())
-        }
+        assertThat(this.checker.isValidSudoku(board)).isTrue()
+        this.printBoard(board)
     }
 
     private fun test(solver: SudokuSolver) {
@@ -65,12 +64,16 @@ internal class SudokuSolverTest {
 
     private fun test(solver: SudokuSolver, board: Array<CharArray>, expected: Array<CharArray>) {
         solver.solveSudoku(board)
-        println()
+        this.printBoard(board)
+        assertThat(this.checker.isValidSudoku(board)).isTrue()
+        assertThat(board).isEqualTo(expected)
+    }
+
+    private fun printBoard(board: Array<CharArray>) {
         board.forEach {
             println(it.toList())
         }
-        assertThat(this.checker.isValidSudoku(board)).isTrue()
-        assertThat(board).isEqualTo(expected)
+        println()
     }
 }
 

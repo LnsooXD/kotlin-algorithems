@@ -1,6 +1,6 @@
 package leetcode.sudoku.solver
 
-abstract class AbsNavieDFS : SudokuSolver {
+abstract class AbsDFS : SudokuSolver {
 
     final override fun solveSudoku(board: Array<CharArray>) {
         this.setExistsBits(board)
