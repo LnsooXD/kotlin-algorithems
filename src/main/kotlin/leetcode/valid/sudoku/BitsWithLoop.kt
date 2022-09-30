@@ -11,7 +11,7 @@ class BitsWithLoop : ValidSudoku {
             if (board[i][j] == '.') {
                 continue
             }
-            val value = board[i][j] - '0'
+            val value = board[i][j] - '1'
             if (!this.isValid(i, j, value)) {
                 return false
             }
@@ -25,17 +25,17 @@ class BitsWithLoop : ValidSudoku {
         val bitRow = row / 3
         val bitCol = col / 3
 
-        this.rows[bitRow] = this.rows[bitRow].or(mask.shl(10 * (row % 3)))
-        this.cols[bitCol] = this.cols[bitCol].or(mask.shl(10 * (col % 3)))
-        this.blocks[bitRow] = this.blocks[row / 3].or(mask.shl(10 * (bitCol)))
+        this.rows[bitRow] = this.rows[bitRow].or(mask.shl(9 * (row % 3)))
+        this.cols[bitCol] = this.cols[bitCol].or(mask.shl(9 * (col % 3)))
+        this.blocks[bitRow] = this.blocks[row / 3].or(mask.shl(9 * (bitCol)))
     }
 
     private fun isValid(row: Int, col: Int, value: Int) = 1.shl(value).let {
         val bitRow = row / 3
         val bitCol = col / 3
 
-        this.rows[bitRow].and(it.shl(10 * (row % 3))) == 0 &&
-                this.cols[bitCol].and(it.shl(10 * (col % 3))) == 0 &&
-                this.blocks[bitRow].and(it.shl(10 * (col / 3))) == 0
+        this.rows[bitRow].and(it.shl(9 * (row % 3))) == 0 &&
+                this.cols[bitCol].and(it.shl(9 * (col % 3))) == 0 &&
+                this.blocks[bitRow].and(it.shl(9 * (col / 3))) == 0
     }
 }
