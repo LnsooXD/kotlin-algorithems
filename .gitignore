@@ -125,3 +125,6 @@ gradle-app.setting
 .classpath
 
 /bin
+
+
+*.hprof
