@@ -11,7 +11,7 @@ internal class SudokuSolverTest {
 
     @Test
     fun testDFS1() {
-        val solver: SudokuSolver = DFS1()
+        val solver: SudokuSolver = NavieDFS1()
         val board = arrayOf(
             charArrayOf('5', '3', '.', '.', '7', '.', '.', '.', '.'),
             charArrayOf('6', '.', '.', '1', '9', '5', '.', '.', '.'),
@@ -47,7 +47,7 @@ internal class SudokuSolverTest {
 
     @Test
     fun testDFS2() {
-        val solver: SudokuSolver = DFS2()
+        val solver: SudokuSolver = NavieDFS2()
         val board = arrayOf(
             charArrayOf('5', '3', '.', '.', '7', '.', '.', '.', '.'),
             charArrayOf('6', '.', '.', '1', '9', '5', '.', '.', '.'),
@@ -83,7 +83,7 @@ internal class SudokuSolverTest {
 
     @Test
     fun testSolvingEmpty() {
-        val solver: SudokuSolver = DFS2()
+        val solver: SudokuSolver = NavieDFS2()
         val board = Array(9) { CharArray(9) { '.' } }
         solver.solveSudoku(board)
         board.forEach {

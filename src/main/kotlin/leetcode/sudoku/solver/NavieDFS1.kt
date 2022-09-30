@@ -1,6 +1,6 @@
 package leetcode.sudoku.solver
 
-class DFS1 : AbsDFS() {
+class NavieDFS1 : AbsNavieDFS() {
 
 
     private val rows = IntArray(9) { 0 }
