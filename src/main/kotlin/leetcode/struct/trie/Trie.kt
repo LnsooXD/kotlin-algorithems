@@ -1,9 +1,5 @@
 package leetcode.struct.trie
 
-// https://www.bilibili.com/cheese/play/ep32682?csource=common_hp_history_null
-// https://leetcode.cn/problems/implement-trie-prefix-tree/
-
-
 class Trie : TrieI {
 
     private val children: Array<Trie?> = Array(256) { null }
@@ -11,32 +7,41 @@ class Trie : TrieI {
 
     override fun insert(word: String) {
         if (word.isEmpty()) {
-            this.isEndOfWord = true
             return
         }
-        val headCharCode = word[0].toInt()
-        val child = this.children[headCharCode] ?: Trie()
-        this.children[headCharCode] = child
-        child.insert(word.substring(1))
+
+        var node = this
+        for (c in word) {
+            val key = c.toInt()
+            node = node.children[key] ?: Trie().apply {
+                node.children[key] = this
+            }
+        }
+        node.isEndOfWord = true
     }
 
     override fun search(word: String): Boolean {
         if (word.isEmpty()) {
-            return this.isEndOfWord
+            return true
         }
-
-        val child = this.children[word[0].toInt()] ?: return false
-        return child.search(word.substring(1))
+        return searchPrefix(word)?.isEndOfWord ?: false
     }
 
     override fun startsWith(prefix: String): Boolean {
         if (prefix.isEmpty()) {
             return true
         }
-
-        val headChar = prefix[0]
-        val child = this.children[headChar.toInt()] ?: return false
-        return child.startsWith(prefix.substring(1))
+        return searchPrefix(prefix) != null
     }
 
+    private fun searchPrefix(prefix: String): Trie? {
+        if (prefix.isEmpty()) {
+            return this
+        }
+        var node = this
+        for (c in prefix) {
+            node = node.children[c.toInt()] ?: return null
+        }
+        return node
+    }
 }

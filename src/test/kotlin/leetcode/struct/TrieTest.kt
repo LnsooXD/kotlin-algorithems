@@ -1,6 +1,7 @@
 package leetcode.struct
 
 import leetcode.struct.trie.Trie
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 internal class TrieTest {
@@ -11,7 +12,12 @@ internal class TrieTest {
         root.insert("xxxx")
         root.insert("xxxxaa")
 
-        var res = root.search("xxxx")
-        println("res: $res")
+        assertThat( root.search("xxxx")).isTrue()
+        assertThat( root.search("xxx")).isFalse()
+        assertThat( root.startsWith("xxx")).isTrue()
+
+        assertThat( root.search("xxxxaa")).isTrue()
+        assertThat( root.search("xxxxa")).isFalse()
+        assertThat( root.startsWith("xxxxa")).isTrue()
     }
 }
