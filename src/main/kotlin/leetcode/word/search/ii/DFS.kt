@@ -1,8 +1,15 @@
 package leetcode.word.search.ii
 
 class DFS : WordSearchI {
-    override fun findWords(board: Array<CharArray>, words: Array<String>) =
-        words.map { it.toCharArray() }.filter { exists(board, it) }.map { String(it) }
+    override fun findWords(board: Array<CharArray>, words: Array<String>): List<String> {
+        val res = mutableListOf<String>()
+        for (word in words) {
+            if (exists(board, word.toCharArray())) {
+                res.add(word)
+            }
+        }
+        return res
+    }
 
     private fun exists(board: Array<CharArray>, word: CharArray): Boolean {
         if (word.isEmpty()) {
@@ -12,7 +19,7 @@ class DFS : WordSearchI {
         for (i in board.indices) {
             for (j in board[i].indices) {
                 if (board[i][j] == head) {
-                    if (exists(board, word, 0, i, j, mutableSetOf())) {
+                    if (exists(board, word, 0, i, j, IntArray(board.size))) {
                         return true
                     }
                 }
@@ -27,29 +34,27 @@ class DFS : WordSearchI {
         ci: Int,
         bx: Int,
         by: Int,
-        usedChars: MutableSet<String>
+        usedChars: IntArray
     ): Boolean {
-        if (ci >= word.size) {
+        val mask = 1.shl(by)
+        val row = board[bx]
+        if (usedChars[bx].and(mask) != 0 || word[ci] != row[by]) {
+            return false
+        }
+
+        val nextCi = ci + 1
+        if (nextCi >= word.size) {
             return true
         }
-        if (bx < 0 || by < 0 || bx >= board.size || by >= board[bx].size) {
-            return false
-        }
 
-        val key = "$bx-$by"
+        usedChars[bx] = usedChars[bx].or(mask)
 
-        if (usedChars.contains(key) || word[ci] != board[bx][by]) {
-            return false
-        }
-        usedChars.add(key)
-
-        val exists = exists(board, word, ci + 1, bx, by + 1, usedChars) ||
-                exists(board, word, ci + 1, bx, by - 1, usedChars) ||
-                exists(board, word, ci + 1, bx + 1, by, usedChars) ||
-                exists(board, word, ci + 1, bx - 1, by, usedChars)
-
+        val exists = (by + 1 < row.size && exists(board, word, nextCi, bx, by + 1, usedChars)) ||
+                (by - 1 >= 0 && exists(board, word, nextCi, bx, by - 1, usedChars)) ||
+                (bx + 1 < board.size && exists(board, word, nextCi, bx + 1, by, usedChars)) ||
+                (bx - 1 >= 0 && exists(board, word, nextCi, bx - 1, by, usedChars))
         if (!exists) {
-            usedChars.remove(key)
+            usedChars[bx] = usedChars[bx].and(mask.inv())
         }
         return exists
     }
