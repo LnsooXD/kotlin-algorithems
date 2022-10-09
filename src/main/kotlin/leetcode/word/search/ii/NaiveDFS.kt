@@ -1,6 +1,7 @@
 package leetcode.word.search.ii
 
-class DFS : WordSearchI {
+class NaiveDFS : WordSearchI {
+
     override fun findWords(board: Array<CharArray>, words: Array<String>): List<String> {
         val res = mutableListOf<String>()
         for (word in words) {
@@ -19,7 +20,7 @@ class DFS : WordSearchI {
         for (i in board.indices) {
             for (j in board[i].indices) {
                 if (board[i][j] == head) {
-                    if (exists(board, word, 0, i, j, IntArray(board.size))) {
+                    if (exists(board, word, 0, i, j)) {
                         return true
                     }
                 }
@@ -33,12 +34,10 @@ class DFS : WordSearchI {
         word: CharArray,
         ci: Int,
         bx: Int,
-        by: Int,
-        usedChars: IntArray
+        by: Int
     ): Boolean {
-        val mask = 1.shl(by)
         val row = board[bx]
-        if (usedChars[bx].and(mask) != 0 || word[ci] != row[by]) {
+        if (word[ci] != row[by]) {
             return false
         }
 
@@ -47,16 +46,28 @@ class DFS : WordSearchI {
             return true
         }
 
-        usedChars[bx] = usedChars[bx].or(mask)
+        val tmp = row[by]
+        row[by] = '@'
 
-        val exists = (by + 1 < row.size && exists(board, word, nextCi, bx, by + 1, usedChars)) ||
-                (by - 1 >= 0 && exists(board, word, nextCi, bx, by - 1, usedChars)) ||
-                (bx + 1 < board.size && exists(board, word, nextCi, bx + 1, by, usedChars)) ||
-                (bx - 1 >= 0 && exists(board, word, nextCi, bx - 1, by, usedChars))
-        if (!exists) {
-            usedChars[bx] = usedChars[bx].and(mask.inv())
+        var res = false
+
+        for (i in 0 until 4) {
+            val x = bx + dx[i]
+            val y = by + dy[i]
+
+            if (x >= 0 && x < board.size && y >= 0 && y < board[x].size) {
+                if (exists(board, word, nextCi, x, y)) {
+                    res = true
+                    break
+                }
+            }
         }
-        return exists
+        row[by] = tmp
+        return res
     }
 
+    companion object {
+        private val dx = intArrayOf(0, 0, 1, -1)
+        private val dy = intArrayOf(1, -1, 0, 0)
+    }
 }

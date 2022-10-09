@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 
 internal class WordSearchTest {
 
-    private val core: WordSearchI = DFS()
+    private val core: WordSearchI = NaiveDFS()
 
     @Test
     fun test01() {
