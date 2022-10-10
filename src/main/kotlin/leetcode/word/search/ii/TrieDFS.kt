@@ -53,9 +53,7 @@ class TrieDFS : WordSearchI {
         private fun hash(c: Char): Int = c - 'a'
 
         private fun getAndSetChildDefault(c: Char): Trie = this.hash(c).let { key ->
-            val child = this.children[key] ?: Trie().also {
-                this.children[key] = it
-            }
+            val child = this.children[key] ?: Trie().also { this.children[key] = it }
             return child
         }
     }
