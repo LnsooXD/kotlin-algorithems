@@ -1,6 +1,6 @@
 package leetcode.n.queens.ii
 
-class DFSWithBites : NQueensII {
+class DFSWithBytes : NQueensII {
 
     override fun totalNQueens(n: Int) = traceQueens(n, 0, 0L)
 

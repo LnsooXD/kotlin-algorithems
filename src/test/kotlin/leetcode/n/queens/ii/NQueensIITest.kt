@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 
 internal class NQueensIITest {
 
-    private val core = DFSWithBites()
+    private val core = DFSWithBytes2()
 
     @Test
     fun test() {

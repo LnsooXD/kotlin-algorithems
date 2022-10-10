@@ -12,4 +12,13 @@ class MainTest {
         val y = 1
         println( y xor 1)
     }
+
+    @Test
+    fun test1() {
+
+        for (x in 0..100) {
+            println("x: $x => ${x.and(-x)}")
+        }
+
+    }
 }
