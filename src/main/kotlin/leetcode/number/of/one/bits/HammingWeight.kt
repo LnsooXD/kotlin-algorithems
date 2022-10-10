@@ -4,12 +4,29 @@ package leetcode.number.of.one.bits
 
 class HammingWeight {
 
+    // 00 001 000
+
+    // 01 010 001
+    // 10 011 001
+
+    // 11 100 010
+
+    fun hammingWeight2Bits(n: Int): Int {
+        var tmp = n
+        var count = 0
+        while (tmp != 0) {
+            count += (tmp.and(3) + 1).ushr(1)
+            tmp = tmp.ushr(2)
+        }
+        return count
+    }
+
     fun hammingWeight(n: Int): Int {
         var tmp = n
         var count = 0
         while (tmp != 0) {
             if (tmp.and(1) != 0) {
-                count ++
+                count++
             }
             tmp = tmp.ushr(1)
         }
