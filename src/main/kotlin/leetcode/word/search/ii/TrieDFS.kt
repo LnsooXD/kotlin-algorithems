@@ -27,8 +27,8 @@ class TrieDFS : WordSearchI {
         val tmp = board[bx][by]
         board[bx][by] = 'z' + 1
         for (i in 0 until 4) {
-            val x = bx + dx[i]
-            val y = by + dy[i]
+            val x = bx + DIRECTIONS_X[i]
+            val y = by + DIRECTIONS_Y[i]
             if (x >= 0 && x < board.size && y >= 0 && y < board[x].size) {
                 val child = node.getChild(board[x][y]) ?: continue
                 findWords(board, x, y, child, res)
@@ -61,7 +61,7 @@ class TrieDFS : WordSearchI {
     }
 
     companion object {
-        private val dx = intArrayOf(0, 0, 1, -1)
-        private val dy = intArrayOf(1, -1, 0, 0)
+        private val DIRECTIONS_X = intArrayOf(0, 0, 1, -1)
+        private val DIRECTIONS_Y = intArrayOf(1, -1, 0, 0)
     }
 }
