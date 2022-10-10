@@ -12,8 +12,7 @@ class TrieDFS : WordSearchI {
 
         for (i in board.indices) {
             for (j in board[i].indices) {
-                val child = root.getChild(board[i][j]) ?: continue
-                findWords(board, i, j, child, res)
+                findWords(board, i, j, root.getChild(board[i][j]) ?: continue, res)
             }
         }
         return res
@@ -30,8 +29,7 @@ class TrieDFS : WordSearchI {
                 val x = bx + DIRECTIONS_X[i]
                 val y = by + DIRECTIONS_Y[i]
                 if (x >= 0 && x < board.size && y >= 0 && y < board[x].size) {
-                    val child = node.getChild(board[x][y]) ?: continue
-                    findWords(board, x, y, child, res)
+                    findWords(board, x, y, node.getChild(board[x][y]) ?: continue, res)
                 }
             }
             board[bx][by] = it
