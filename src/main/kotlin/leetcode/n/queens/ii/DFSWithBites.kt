@@ -2,38 +2,23 @@ package leetcode.n.queens.ii
 
 class DFSWithBites : NQueensII {
 
-    override fun totalNQueens(n: Int) = traceQueens(n, 0, IntArray(3) { 0 })
+    override fun totalNQueens(n: Int) = traceQueens(n, 0, 0L)
 
-    private fun traceQueens(n: Int, row: Int, filterBites: IntArray): Int {
+    private fun traceQueens(n: Int, row: Int, filterBites: Long): Int {
         if (row >= n) {
             return 1
         }
-
         var count = 0
-
         for (col in 0 until n) {
-            val bcol = 1.shl(col)
-            if (filterBites[0].and(bcol) != 0) {
+            val bits = 1L.shl(col).shl(19).or(
+                1L.shl(col + row)
+            ).shl(19).or(
+                1L.shl(n + col - row)
+            )
+            if (bits.and(filterBites) != 0L) {
                 continue
             }
-            val bsum = 1.shl(col + row)
-            if (filterBites[1].and(bsum) != 0) {
-                continue
-            }
-            val bdiff = 1.shl(n + col - row)
-            if (filterBites[2].and(bdiff) != 0) {
-                continue
-            }
-
-            filterBites[0] = filterBites[0].or(bcol)
-            filterBites[1] = filterBites[1].or(bsum)
-            filterBites[2] = filterBites[2].or(bdiff)
-
-            count += traceQueens(n, row + 1, filterBites)
-
-            filterBites[0] = filterBites[0].xor(bcol)
-            filterBites[1] = filterBites[1].xor(bsum)
-            filterBites[2] = filterBites[2].xor(bdiff)
+            count += traceQueens(n, row + 1, filterBites.or(bits))
         }
         return count
     }
