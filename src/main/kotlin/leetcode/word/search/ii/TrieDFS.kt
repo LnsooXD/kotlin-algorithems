@@ -42,9 +42,7 @@ class TrieDFS : WordSearchI {
 
         fun add(word: String) {
             var node = this
-            for (c in word) {
-                node = node.getAndSetChildDefault(c)
-            }
+            word.forEach { node = node.getAndSetChildDefault(it) }
             node.word = word
         }
 
