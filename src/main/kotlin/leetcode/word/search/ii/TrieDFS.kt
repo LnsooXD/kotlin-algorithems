@@ -24,17 +24,18 @@ class TrieDFS : WordSearchI {
             res.add(it)
             node.word = null
         }
-        val tmp = board[bx][by]
-        board[bx][by] = 'z' + 1
-        for (i in 0 until 4) {
-            val x = bx + DIRECTIONS_X[i]
-            val y = by + DIRECTIONS_Y[i]
-            if (x >= 0 && x < board.size && y >= 0 && y < board[x].size) {
-                val child = node.getChild(board[x][y]) ?: continue
-                findWords(board, x, y, child, res)
+        board[bx][by].let {
+            board[bx][by] = 'z' + 1
+            for (i in 0 until 4) {
+                val x = bx + DIRECTIONS_X[i]
+                val y = by + DIRECTIONS_Y[i]
+                if (x >= 0 && x < board.size && y >= 0 && y < board[x].size) {
+                    val child = node.getChild(board[x][y]) ?: continue
+                    findWords(board, x, y, child, res)
+                }
             }
+            board[bx][by] = it
         }
-        board[bx][by] = tmp
     }
 
     private class Trie {
