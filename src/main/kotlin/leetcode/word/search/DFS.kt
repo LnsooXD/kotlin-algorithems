@@ -26,23 +26,25 @@ class DFS : WordSearchI {
             return true
         }
 
-        val tmp = board[x][y]
-        board[x][y] = '@'
+        board[x][y].let {
+            board[x][y] = '@'
 
-        var exists = false
+            var exists = false
 
-        for (i in 0 until 4) {
-            val nextX = x + DIRECTIONS_X[i]
-            val nextY = y + DIRECTIONS_Y[i]
-            if (nextX >= 0 && nextX < board.size && nextY >= 0 && nextY < board[nextX].size) {
-                exists = exist(board, word, nextX, nextY, nextCi)
-                if (exists) {
-                    break
+            for (i in 0 until 4) {
+                val nextX = x + DIRECTIONS_X[i]
+                val nextY = y + DIRECTIONS_Y[i]
+                if (nextX >= 0 && nextX < board.size && nextY >= 0 && nextY < board[nextX].size) {
+                    exists = exist(board, word, nextX, nextY, nextCi)
+                    if (exists) {
+                        break
+                    }
                 }
             }
+            board[x][y] = it
+
+            return exists
         }
-        board[x][y] = tmp
-        return exists
     }
 
 
