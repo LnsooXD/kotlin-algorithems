@@ -16,7 +16,14 @@ class MainTest {
     @Test
     fun test1() {
         for (x in -100..100) {
-            println("x: ${x.toUnsignedBinaryString()} => ${x.and(-x)}")
+            println("x: ${x.toUnsignedBinaryString()} => ${x.and(-x).toUnsignedBinaryString()}")
+        }
+    }
+
+    @Test
+    fun test2() {
+        for (x in -100..100) {
+            println("x: ${x.toUnsignedBinaryString()} => ${x.and(x - 1).toUnsignedBinaryString()}")
         }
     }
 }
