@@ -48,7 +48,7 @@ class TrieDFS : WordSearchI {
             node.word = word
         }
 
-        fun getChild(c: Char) = this.hash(c).let { this.children[it] }
+        fun getChild(c: Char) = this.children[this.hash(c)]
 
         private fun hash(c: Char): Int = c - 'a'
 
