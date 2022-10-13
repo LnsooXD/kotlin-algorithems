@@ -1,9 +1,8 @@
 package leetcode.triangle
 
-class DP : Triangle {
-
-    // f[row, col] = min(f[row - 1, col]  f[row - 1, col - 1]) + triangle[row][col]
-    // min(f[rows, cols])
+class DPFromTop2Bottom : Triangle {
+    // DP[row, col] = min(DP[row - 1, col], DP[row - 1, col - 1]) + triangle[row][col]
+    // res = min(DP[last row])
     override fun minimumTotal(triangle: List<List<Int>>): Int {
         val totals = IntArray(triangle.size + 2) { Int.MAX_VALUE }
         totals[1] = triangle[0][0]
