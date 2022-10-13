@@ -8,7 +8,7 @@ class DPBottom2Top : Triangle {
         if (triangle.isEmpty()) {
             return 0
         }
-        val totals = triangle[triangle.size - 1].toIntArray()
+        val totals = triangle[triangle.size - 1].toIntArray() // 状态压缩
         for (row in (0..triangle.size - 2).reversed()) {
             for (col in 0..row) {
                 totals[col] = triangle[row][col] + if (totals[col] < totals[col + 1]) totals[col] else totals[col + 1]
