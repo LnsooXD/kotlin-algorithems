@@ -17,11 +17,11 @@ class DPSmallData : ClimbingStairs {
         if (n < 2) {
             return 1
         }
-        val ways = IntArray(4) { 1 }
+        val ways = IntArray(2) { 1 }
         for (i in 2..n) {
-            ways[i.and(3)] = ways[(i - 1).and(3)] + ways[(i - 2).and(3)]
+            ways[i.and(1)] = ways[(i - 1).and(1)] + ways[(i - 2).and(1)]
         }
-        return ways[n.and(3)]
+        return ways[n.and(1)]
     }
 
 }
