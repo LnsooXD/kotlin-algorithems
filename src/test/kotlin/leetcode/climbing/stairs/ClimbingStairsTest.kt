@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 
 internal class ClimbingStairsTest {
 
-    private val core = DFS()
+    private val core = Recursion()
 
     @Test
     fun test1() {
