@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 
 internal class BestTimeToBuyAndSellStockTest {
 
-    private val core = DPBySellDay()
+    private val core = DPByBuyDay()
 
     @Test
     fun test() {
