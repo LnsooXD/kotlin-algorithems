@@ -9,8 +9,7 @@ class DP02 : MaximumProductSubarray {
             return nums[0]
         }
 
-        val max = IntArray(2) { nums[0] }
-        val min = IntArray(2) { nums[0] }
+        val dp = Array(2) { IntArray(2) { nums[0] } }
 
         var res = nums[0]
 
@@ -18,9 +17,9 @@ class DP02 : MaximumProductSubarray {
             val num = nums[i]
             val x = i.and(1)
             val y = (i - 1).and(1)
-            max[x] = max(num, num * if (num >= 0) max[y] else min[y])
-            min[x] = min(num, num * if (num < 0) max[y] else min[y])
-            res = max(res, max[x])
+            dp[x][0] = max(num, num * if (num >= 0) dp[y][0] else dp[y][1])
+            dp[x][1] = min(num, num * if (num < 0) dp[y][0] else dp[y][1])
+            res = max(res, dp[x][0])
         }
         return res
     }
