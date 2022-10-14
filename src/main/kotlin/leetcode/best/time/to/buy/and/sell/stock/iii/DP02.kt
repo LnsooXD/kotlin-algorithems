@@ -5,10 +5,6 @@ package leetcode.best.time.to.buy.and.sell.stock.iii
 
 class DP02 : BestTimeToBuyAndSellStockIII {
     override fun maxProfit(prices: IntArray): Int {
-        if (prices.size < 2) {
-            return 0
-        }
-
         val dayProfits = IntArray(prices.size) { 0 }
 
         for (i in 0 until prices.size - 1) {
@@ -19,17 +15,15 @@ class DP02 : BestTimeToBuyAndSellStockIII {
         var maxBuyProfit = 0
 
         for (i in (0..prices.size - 2).reversed()) {
-            val profit = dayProfits[i]
-            maxBuyProfit = max(profit, maxBuyProfit + profit)
+            maxBuyProfit = dayProfits[i] + if (maxBuyProfit > 0) maxBuyProfit else 0
             buyDP[i] = max(maxBuyProfit, buyDP[i + 1])
         }
 
-        var maxSellProfit = dayProfits[0]
-        var res = maxSellProfit + buyDP[1]
+        var maxSellProfit = 0
+        var res = 0
 
-        for (i in 2 until prices.size) {
-            val profit = dayProfits[i - 1]
-            maxSellProfit = max(profit, maxSellProfit + profit)
+        for (i in 1 until prices.size) {
+            maxSellProfit = dayProfits[i - 1] + if (maxSellProfit > 0) maxSellProfit else 0
             res = max(res, maxSellProfit + buyDP[i])
         }
         return max(res, 0)
