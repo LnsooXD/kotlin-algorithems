@@ -14,11 +14,10 @@ class DP02 : MaximumProductSubarray {
         var res = nums[0]
 
         for (i in 1 until nums.size) {
-            val num = nums[i]
             val x = i.and(1)
             val y = (i - 1).and(1)
-            dp[x][0] = max(num, num * if (num >= 0) dp[y][0] else dp[y][1])
-            dp[x][1] = min(num, num * if (num < 0) dp[y][0] else dp[y][1])
+            dp[x][0] = max(nums[i], nums[i] * if (nums[i] >= 0) dp[y][0] else dp[y][1])
+            dp[x][1] = min(nums[i], nums[i] * if (nums[i] < 0) dp[y][0] else dp[y][1])
             res = max(res, dp[x][0])
         }
         return res
