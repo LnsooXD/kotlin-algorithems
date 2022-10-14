@@ -4,6 +4,8 @@ package leetcode.best.time.to.buy.and.sell.stock
 // let DP[i]: the max profit when sell stock in ith day
 // then
 // DP[i] = max(DP[i - 1] - prices[i - 1] + prices[i], prices[i] - prices[i - 1])
+// =>
+// DP[i] = prices[i] - prices[i - 1] + if (DP[i - 1] > 0) DP[i - 1] else 0
 
 class DPBySellDay : BestTimeToBuyAndSellStock {
     override fun maxProfit(prices: IntArray): Int {
