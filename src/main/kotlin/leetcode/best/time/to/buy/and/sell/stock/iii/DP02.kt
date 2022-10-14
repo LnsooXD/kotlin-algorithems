@@ -16,21 +16,21 @@ class DP02 : BestTimeToBuyAndSellStockIII {
         }
 
         val buyDP = IntArray(prices.size) { 0 }
-        var maxProfit = 0
+        var maxBuyProfit = 0
 
         for (i in (0..prices.size - 2).reversed()) {
             val profit = dayProfits[i]
-            maxProfit = max(profit, maxProfit + profit)
-            buyDP[i] = max(maxProfit, buyDP[i + 1])
+            maxBuyProfit = max(profit, maxBuyProfit + profit)
+            buyDP[i] = max(maxBuyProfit, buyDP[i + 1])
         }
 
-        maxProfit = dayProfits[0]
-        var res = maxProfit + buyDP[1]
+        var maxSellProfit = dayProfits[0]
+        var res = maxSellProfit + buyDP[1]
 
         for (i in 2 until prices.size) {
             val profit = dayProfits[i - 1]
-            maxProfit = max(profit, maxProfit + profit)
-            res = max(res, maxProfit + buyDP[i])
+            maxSellProfit = max(profit, maxSellProfit + profit)
+            res = max(res, maxSellProfit + buyDP[i])
         }
         return max(res, 0)
     }
