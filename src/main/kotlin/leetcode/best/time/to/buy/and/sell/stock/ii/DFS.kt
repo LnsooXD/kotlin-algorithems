@@ -10,7 +10,7 @@ class DFS : BestTimeToBuyAndSellStockII {
         }
         var maxProfit = 0
         for (firstSellDay in startDay + 1 until prices.size) {
-            val profit = this.maxProfit(prices, startDay, firstSellDay) + this.maxProfit(prices, firstSellDay + 1)
+            val profit = this.maxProfit(prices, startDay, firstSellDay)
             if (profit > maxProfit) {
                 maxProfit = profit
             }
@@ -26,7 +26,7 @@ class DFS : BestTimeToBuyAndSellStockII {
                 maxProfit = profit
             }
         }
-        return maxProfit
+        return maxProfit + this.maxProfit(prices, firstSellDay + 1)
     }
 
 }

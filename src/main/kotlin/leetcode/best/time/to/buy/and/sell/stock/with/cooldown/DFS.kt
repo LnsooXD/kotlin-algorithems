@@ -12,7 +12,7 @@ class DFS : BestTimeToBuyAndSellStockWithCoolDown {
         }
         var maxProfit = 0
         for (firstSellDay in startDay + 1 until prices.size) {
-            val profit = maxProfit(prices, startDay, firstSellDay) + maxProfit(prices, firstSellDay + 2)
+            val profit = maxProfit(prices, startDay, firstSellDay)
             if (profit > maxProfit) {
                 maxProfit = profit
             }
@@ -28,7 +28,7 @@ class DFS : BestTimeToBuyAndSellStockWithCoolDown {
                 maxProfit = profit
             }
         }
-        return maxProfit
+        return maxProfit + maxProfit(prices, firstSellDay + 2)
     }
 
 
