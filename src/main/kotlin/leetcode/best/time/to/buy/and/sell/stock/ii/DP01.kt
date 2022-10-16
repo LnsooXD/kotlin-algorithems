@@ -3,6 +3,9 @@ package leetcode.best.time.to.buy.and.sell.stock.ii
 // DP[i][j]: j=0 => max profit of i-th day if has no stock; j=1 => max profit of i-th day if has stock;
 // the power of definition
 //
+// DP[i][0] = max(DP[i-1][0], DP[i-1][1] + prices[i])
+// DP[i][1] = max(DP[i-1][0] + prices[i], DP[i-1][1])
+//
 // k = 2, prices = [1, 101, 2, 103, 3, 105]
 // i = 0 => 0
 // i = 1 => 100
