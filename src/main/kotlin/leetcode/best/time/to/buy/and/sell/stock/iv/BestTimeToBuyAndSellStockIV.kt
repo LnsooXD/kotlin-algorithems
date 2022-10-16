@@ -30,11 +30,9 @@ package leetcode.best.time.to.buy.and.sell.stock.iv
  *  ```
  *
  *  Constraints:
- *  ```
- *      1 <= k <= 100
- *      1 <= prices.length <= 1000
- *      0 <= prices\[i\] <= 1000
- *  ```
+ *  - 1 <= k <= 100
+ *  - 1 <= prices.length <= 1000
+ *  - 0 <= prices\[i\] <= 1000
  **/
 
 interface BestTimeToBuyAndSellStockIV {
