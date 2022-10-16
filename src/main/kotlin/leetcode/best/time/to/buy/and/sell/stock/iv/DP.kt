@@ -5,38 +5,33 @@ package leetcode.best.time.to.buy.and.sell.stock.iv
 
 class DP : BestTimeToBuyAndSellStockIV {
     override fun maxProfit(k: Int, prices: IntArray): Int {
-        val maxProfits = Array(2) { Array(k + 1) { Array<Int?>(3) { null } } }
-        maxProfits[0][0][0] = 0
-        maxProfits[0][0][1] = -prices[0]
+        val maxProfits = Array(2) { Array(k + 1) { LongArray(2) { Int.MIN_VALUE.toLong() } } }
 
-        var x: Int
-        var y = 0
-        var price: Int
+        maxProfits[0][0][0] = 0
+        maxProfits[0][0][1] = (-prices[0]).toLong()
+
+        var maxProfit = 0L
 
         for (i in 1 until prices.size) {
-            x = (i - 1).and(1)
-            y = i.and(1)
-            price = prices[i]
+            val x = (i - 1).and(1)
+            val y = i.and(1)
+            val price = prices[i].toLong()
 
             maxProfits[y][0][0] = maxProfits[x][0][0]
             maxProfits[y][0][1] = max(maxProfits[x][0][1], -price)
 
             for (kk in 1..k) {
-                maxProfits[y][kk][0] = max(maxProfits[x][kk][0], maxProfits[x][kk - 1][1]?.let { it + price })
-                maxProfits[y][kk][1] = max(maxProfits[x][kk][1], maxProfits[x][kk][0]?.let { it - price })
+                maxProfits[y][kk][0] = max(maxProfits[x][kk][0], maxProfits[x][kk - 1][1] + price)
+                maxProfits[y][kk][1] = max(maxProfits[x][kk][1], maxProfits[x][kk][0] - price)
+
+                maxProfit = max(maxProfit, maxProfits[y][kk][0])
             }
         }
 
-        var res = 0
-        maxProfits[y].mapNotNull { it[0] }.forEach {
-            if (it > res) {
-                res = it
-            }
-        }
-        return res
+        return maxProfit.toInt()
     }
 
     companion object {
-        fun max(a: Int?, b: Int?): Int? = if (b == null || (a != null && a > b)) a else b
+        fun max(a: Long, b: Long) = if (a > b) a else b
     }
 }
