@@ -1,7 +1,7 @@
 package leetcode.best.time.to.buy.and.sell.stock.iii
 
 
-// let BUY_DP[i]: max of buy at or after day i
+// let BUY_DP[i]: max profit of buy at or after day i
 
 class DP02 : BestTimeToBuyAndSellStockIII {
     override fun maxProfit(prices: IntArray): Int {

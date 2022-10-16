@@ -1,16 +1,18 @@
-package leetcode.best.time.to.buy.and.sell.stock.ii
+package leetcode.best.time.to.buy.and.sell.stock.with.cooldown
 
-class DFS : BestTimeToBuyAndSellStockII {
+class DFS : BestTimeToBuyAndSellStockWithCoolDown {
 
-    override fun maxProfit(prices: IntArray) = this.maxProfit(prices, 0)
+    override fun maxProfit(prices: IntArray): Int {
+        return this.maxProfit(prices, 0)
+    }
 
-    private fun maxProfit(prices: IntArray, startDay: Int): Int {
+    fun maxProfit(prices: IntArray, startDay: Int): Int {
         if (startDay >= prices.size - 1) {
             return 0
         }
         var maxProfit = 0
         for (firstSellDay in startDay + 1 until prices.size) {
-            val profit = this.maxProfit(prices, startDay, firstSellDay) + this.maxProfit(prices, firstSellDay + 1)
+            val profit = maxProfit(prices, startDay, firstSellDay)
             if (profit > maxProfit) {
                 maxProfit = profit
             }
@@ -18,15 +20,16 @@ class DFS : BestTimeToBuyAndSellStockII {
         return maxProfit
     }
 
-    private fun maxProfit(prices: IntArray, startDay: Int, firstSellDay: Int): Int {
-        var maxProfit = Int.MIN_VALUE
+    fun maxProfit(prices: IntArray, startDay: Int, firstSellDay: Int): Int {
+        var maxProfit = 0
         for (i in startDay until firstSellDay) {
             val profit = prices[firstSellDay] - prices[i]
             if (profit > maxProfit) {
                 maxProfit = profit
             }
         }
-        return maxProfit
+        return maxProfit + maxProfit(prices, firstSellDay + 2)
     }
+
 
 }
