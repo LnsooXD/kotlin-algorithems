@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 
 internal class BestTimeToBuyAndSellStockIITest {
 
-    private val core = Greedy()
+    private val core = DP01()
 
     @Test
     fun test01() {
