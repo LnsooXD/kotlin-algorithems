@@ -14,11 +14,7 @@ package leetcode.best.time.to.buy.and.sell.stock.with.cooldown
 
 class DP : BestTimeToBuyAndSellStockWithCoolDown {
     override fun maxProfit(prices: IntArray): Int {
-        val maxProfits = Array(2) { IntArray(3) }
-
-        maxProfits[0][0] = -prices[0]
-        maxProfits[0][1] = 0
-        maxProfits[0][2] = 0
+        val maxProfits = Array(2) { intArrayOf(-prices[0], 0, 0) }
 
         var x: Int
         var y = 0
