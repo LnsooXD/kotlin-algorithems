@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test
 internal class BestTimeToBuyAndSellStockWithCoolDownTest {
 
     private val core = DFS()
-
     @Test
     fun test() {
         val prices = intArrayOf(1, 2, 3, 0, 2)
