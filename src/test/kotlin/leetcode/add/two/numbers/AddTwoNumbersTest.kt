@@ -1,11 +1,12 @@
-package leetcode
+package leetcode.add.two.numbers
 
+import leetcode.listNodeOf
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 internal class AddTwoNumbersTest {
 
-    private val core = AddTwoNumbers()
+    private val core = Loop()
 
     @Test
     fun testAddTwoNumbers0() {
