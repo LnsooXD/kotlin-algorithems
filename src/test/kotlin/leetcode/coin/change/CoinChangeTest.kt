@@ -39,4 +39,11 @@ internal class CoinChangeTest {
         assertThat(res).isEqualTo(24)
     }
 
+    @Test
+    fun test05() {
+        val coins = intArrayOf(3, 5)
+        val amount = 11
+        val res = this.core.coinChange(coins, amount)
+        assertThat(res).isEqualTo(3)
+    }
 }
