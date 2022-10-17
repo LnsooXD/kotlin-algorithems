@@ -25,7 +25,7 @@ class DFS : EditDistance {
 
     companion object {
         fun min(a: Int, b: Int) = if (a < b) a else b
-        fun min(a: Int, b: Int, c: Int) = if (b < c) if (a < b) a else b else c
+        fun min(a: Int, b: Int, c: Int) = min(min(a, b), c)
         fun max(a: Int, b: Int) = if (a > b) a else b
     }
 
