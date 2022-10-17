@@ -5,7 +5,7 @@ package leetcode.coin.change
 class DP : CoinChange {
 
     override fun coinChange(coins: IntArray, amount: Int): Int {
-        val minSteps = IntArray(amount + 1) { Int.MAX_VALUE }
+        val minSteps = IntArray(amount + 1) { amount + 1 }
         minSteps[0] = 0
 
         for (i in 1..amount) {
@@ -13,13 +13,13 @@ class DP : CoinChange {
                 if (i < coin) {
                     continue
                 }
-                val minStep = minSteps[i - coin]
-                if (minStep < minSteps[i] - 1) {
-                    minSteps[i] = minStep + 1
+                val minStep = minSteps[i - coin] + 1
+                if (minStep < minSteps[i]) {
+                    minSteps[i] = minStep
                 }
             }
         }
-        return if (minSteps[amount] == Int.MAX_VALUE) -1 else minSteps[amount]
+        return if (minSteps[amount] > amount) -1 else minSteps[amount]
     }
 
 }
