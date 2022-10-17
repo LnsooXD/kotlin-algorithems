@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 
 internal class CoinChangeTest {
 
-    private val core = Recursion()
+    private val core = DP()
 
     @Test
     fun test01() {
@@ -46,4 +46,13 @@ internal class CoinChangeTest {
         val res = this.core.coinChange(coins, amount)
         assertThat(res).isEqualTo(3)
     }
+
+    @Test
+    fun test06() {
+        val coins = intArrayOf(474, 83, 404, 3)
+        val amount = 264
+        val res = this.core.coinChange(coins, amount)
+        assertThat(res).isEqualTo(8)
+    }
+
 }
