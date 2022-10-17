@@ -10,17 +10,14 @@ class DP : LongestIncreasingSubsequence {
         var res = 0
 
         for (i in 1 until nums.size) {
-            var max = 0
             for (j in 0 until i) {
                 if (nums[i] > nums[j]) {
-                    if (dp[j] > max) {
-                        max = dp[j]
+                    val dpj = dp[j] + 1
+                    if (dpj > dp[i]) {
+                        dp[i] = dpj
                     }
                 }
             }
-
-            dp[i] = max + 1
-
             if (dp[i] > res) {
                 res = dp[i]
             }

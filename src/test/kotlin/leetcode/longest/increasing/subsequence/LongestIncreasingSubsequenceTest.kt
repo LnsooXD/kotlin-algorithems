@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 
 internal class LongestIncreasingSubsequenceTest {
 
-    private val core = MaintainLISWithBinarySearch()
+    private val core = DP()
 
     @Test
     fun test01() {
