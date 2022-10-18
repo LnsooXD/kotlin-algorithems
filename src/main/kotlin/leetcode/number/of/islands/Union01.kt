@@ -12,24 +12,24 @@ class Union01 : NumberOfIslands {
 
         val union = Union(m * n)
         var offset = 0
+        var total = 0
+
         for (i in 0 until m) {
             for (j in 0 until n) {
                 val node = offset + j
-                if (grid[i][j] == '0') {
-                    union.remove(node)
-                } else {
-                    if (j - 1 >= 0 && grid[i][j - 1] == '1') {
-                        union.union(node, node - 1)
+                if (grid[i][j] == '1') {
+                    total++
+                    if (j - 1 >= 0 && grid[i][j - 1] == '1' && union.union(node, node - 1)) {
+                        total--
                     }
-
-                    if (i - 1 >= 0 && grid[i - 1][j] == '1') {
-                        union.union(node, node - n)
+                    if (i - 1 >= 0 && grid[i - 1][j] == '1' && union.union(node, node - n)) {
+                        total--
                     }
                 }
             }
             offset += n
         }
-        return union.rootsCount()
+        return total
     }
 
     class Union(N: Int) {
@@ -37,10 +37,6 @@ class Union01 : NumberOfIslands {
 
         init {
             this.roots = IntArray(N) { it }
-        }
-
-        fun remove(i: Int) {
-            this.roots[i] = -1
         }
 
         private fun findRoot(i: Int): Int {
@@ -57,11 +53,13 @@ class Union01 : NumberOfIslands {
             return root
         }
 
-        fun union(p: Int, q: Int) {
-            this.roots[this.findRoot(p)] = this.findRoot(q)
-        }
+        fun union(p: Int, q: Int): Boolean {
+            val rootP = this.findRoot(p)
+            val rootQ = this.findRoot(q)
 
-        fun rootsCount() = this.roots.filterIndexed { i, v -> i == v }.count()
+            this.roots[rootP] = rootQ
+            return rootP != rootQ
+        }
     }
 
 }
