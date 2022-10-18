@@ -7,7 +7,7 @@ import java.time.Duration
 
 internal class NumberOfIslandsTest {
 
-    private val core = Union()
+    private val core = FloodFillDFS()
 
     @Test
     fun test01() {

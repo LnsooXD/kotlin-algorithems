@@ -17,14 +17,15 @@ class FloodFillDFS : NumberOfIslands {
         if (i >= m || j >= n || i < 0 || j < 0 || grid[i][j] == '0') {
             return 0
         }
-
         grid[i][j] = '0'
-
-        this.foodFill(grid, i + 1, j, m, n)
-        this.foodFill(grid, i, j + 1, m, n)
-        this.foodFill(grid, i - 1, j, m, n)
-        this.foodFill(grid, i, j - 1, m, n)
-
+        for (di in DI.indices) {
+            this.foodFill(grid, i + DI[di], j + DJ[di], m, n)
+        }
         return 1
+    }
+
+    companion object {
+        val DI = intArrayOf(0, 0, 1, -1)
+        val DJ = intArrayOf(1, -1, 0, 0)
     }
 }
