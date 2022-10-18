@@ -1,6 +1,6 @@
 package leetcode.number.of.islands
 
-class Union01 : NumberOfIslands {
+class Union : NumberOfIslands {
 
     override fun numIslands(grid: Array<CharArray>): Int {
         if (grid.isEmpty()) {

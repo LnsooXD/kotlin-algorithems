@@ -7,7 +7,7 @@ import java.time.Duration
 
 internal class NumberOfIslandsTest {
 
-    private val core = Union01()
+    private val core = Union()
 
     @Test
     fun test01() {
