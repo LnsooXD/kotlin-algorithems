@@ -2,6 +2,8 @@ package leetcode.dit.distance
 
 // DP[i][j] the minimum distance steps to let word1[0..i] => word[0..j]
 
+// https://leetcode.com/problems/coin-change/discuss/114993/four-kinds-of-solutions-dp-bfs-dfs-improved-dfs
+
 class DP : EditDistance {
     override fun minDistance(word1: String, word2: String): Int {
 
