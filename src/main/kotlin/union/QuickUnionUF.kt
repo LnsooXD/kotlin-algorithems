@@ -1,9 +1,9 @@
 package union
 
-class QuickUnionUF {
+class QuickUnionUF(N: Int) {
     private val roots: IntArray
 
-    constructor(N: Int) {
+    init {
         this.roots = IntArray(N) { it }
     }
 
