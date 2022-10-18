@@ -2,10 +2,12 @@ package leetcode.dit.distance
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertTimeoutPreemptively
+import java.time.Duration
 
 internal class EditDistanceTest {
 
-    private val core = DFS()
+    private val core = DP()
 
     @Test
     fun test01() {
@@ -48,11 +50,13 @@ internal class EditDistanceTest {
         assertThat(res).describedAs("word1: '$word1', word2: '$word2'").isEqualTo(0)
     }
 
-//    @Test
-//    fun test06() {
-//        val word1 = "dinitrophenylhydrazine"
-//        val word2 = "acetylphenylhydrazine"
-//        val res = this.core.minDistance(word1, word2)
-//        assertThat(res).describedAs("word1: '$word1', word2: '$word2'").isEqualTo(0)
-//    }
+    @Test
+    fun test06() {
+        assertTimeoutPreemptively(Duration.ofSeconds(10)) {
+            val word1 = "dinitrophenylhydrazine"
+            val word2 = "acetylphenylhydrazine"
+            val res = this.core.minDistance(word1, word2)
+            assertThat(res).describedAs("word1: '$word1', word2: '$word2'").isEqualTo(6)
+        };
+    }
 }
