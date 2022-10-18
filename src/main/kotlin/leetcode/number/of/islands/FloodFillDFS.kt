@@ -1,6 +1,6 @@
 package leetcode.number.of.islands
 
-class FloodFill01 : NumberOfIslands {
+class FloodFillDFS : NumberOfIslands {
     override fun numIslands(grid: Array<CharArray>): Int {
         val m = grid.size
         val n = if (m > 0) grid[0].size else 0
