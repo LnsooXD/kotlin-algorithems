@@ -11,15 +11,11 @@ class DP : EditDistance {
 
         for (i in 1..word1.length) {
             for (j in 1..word2.length) {
-                dp[i][j] = if (word1[i - 1] == word2[j - 1]) {
-                    dp[i - 1][j - 1]
-                } else {
-                    1 + min(
-                        dp[i - 1][j], // Insert
-                        dp[i][j - 1], // Delete
-                        dp[i - 1][j - 1] // replace
-                    )
-                }
+                dp[i][j] = min(
+                    dp[i - 1][j] + 1, // Insert
+                    dp[i][j - 1] + 1, // Delete
+                    dp[i - 1][j - 1] + if (word1[i - 1] == word2[j - 1]) 0 else 1 // replace or skip
+                )
             }
         }
         return dp[word1.length][word2.length]

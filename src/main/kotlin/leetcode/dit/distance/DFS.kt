@@ -10,15 +10,16 @@ class DFS : EditDistance {
             return max(word2.size - index2, word1.size - index1)
         }
 
-        return if (word1[index1] == word2[index2]) {
-            this.minDistance(word1, index1 + 1, word2, index2 + 1) // skip
-        } else {
-            1 + min(
-                this.minDistance(word1, index1 + 1, word2, index2), // delete
-                this.minDistance(word1, index1 + 1, word2, index2 + 1), // replace
-                this.minDistance(word1, index1, word2, index2 + 1) // insert
-            )
-        }
+        return min(
+            this.minDistance(word1, index1 + 1, word2, index2), // delete
+            this.minDistance(
+                word1,
+                index1 + 1,
+                word2,
+                index2 + 1
+            ) + if (word1[index1] == word2[index2]) 0 else 1, // replace or skip
+            this.minDistance(word1, index1, word2, index2 + 1) // insert
+        )
     }
 
 
