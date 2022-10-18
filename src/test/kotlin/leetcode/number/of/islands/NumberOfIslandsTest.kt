@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 
 internal class NumberOfIslandsTest {
 
-    private val core = Union01()
+    private val core = FloodFill01()
 
     @Test
     fun test01() {
@@ -18,5 +18,18 @@ internal class NumberOfIslandsTest {
 
         val res = this.core.numIslands(grid)
         assertThat(res).isEqualTo(1)
+    }
+
+    @Test
+    fun test02() {
+        val grid = arrayOf(
+            charArrayOf('1', '1', '0', '0', '0'),
+            charArrayOf('1', '1', '0', '0', '0'),
+            charArrayOf('0', '0', '1', '0', '0'),
+            charArrayOf('0', '0', '0', '1', '1')
+        )
+
+        val res = this.core.numIslands(grid)
+        assertThat(res).isEqualTo(3)
     }
 }
