@@ -7,7 +7,7 @@ internal class LRUCacheITest {
 
     @Test
     fun test01() {
-        val lRUCache = LRUCache(2)
+        val lRUCache = this.newCache(2)
         lRUCache.put(1, 1)                           // cache is {1=1}
         lRUCache.put(2, 2)                           // cache is {1=1, 2=2}
         assertThat(lRUCache.get(1)).isEqualTo(1)     // return 1
@@ -21,12 +21,16 @@ internal class LRUCacheITest {
 
     @Test
     fun test02() {
-        val lRUCache = LRUCache(2)
+        val lRUCache = this.newCache(2)
         lRUCache.put(2, 1)
         lRUCache.put(2, 2)
         assertThat(lRUCache.get(2)).isEqualTo(2)
         lRUCache.put(1, 1)
         lRUCache.put(4, 1)
         assertThat(lRUCache.get(2)).isEqualTo(-1)
+    }
+
+    private fun newCache(capacity: Int): LRUCacheI {
+        return LRUCacheWithSelfLinkedList(capacity)
     }
 }
