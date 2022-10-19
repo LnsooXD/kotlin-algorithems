@@ -46,9 +46,7 @@ class LRUCacheWithSelfLinkedList(private val capacity: Int) : LRUCacheI {
         tail.next = tail
     }
 
-    private fun find(key: Int): Node {
-        return this.nodeCache[key] ?: this.tail
-    }
+    private fun find(key: Int) = this.nodeCache[key] ?: this.tail
 
     private fun moveToFirst(node: Node) {
         if (this.head.next != node) {
