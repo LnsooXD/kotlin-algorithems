@@ -18,14 +18,21 @@ class FloodFillDFS : NumberOfIslands {
             return 0
         }
         grid[i][j] = '0'
-        for (di in DI.indices) {
-            this.foodFill(grid, i + DI[di], j + DJ[di], m, n)
+        for ((di, dj) in DIRECTIONS) {
+            this.foodFill(grid, i + di, j + dj, m, n)
         }
         return 1
     }
 
     companion object {
-        val DI = intArrayOf(0, 0, 1, -1)
-        val DJ = intArrayOf(1, -1, 0, 0)
+//        val DIRECTIONS =
+//            intArrayOf(0, 0, 1, -1).run { this.mapIndexed { i, v -> intArrayOf(v, this[this.size - i - 1]) } }
+
+        val DIRECTIONS = arrayOf(
+            intArrayOf(0, 1),
+            intArrayOf(0, -1),
+            intArrayOf(1, 0),
+            intArrayOf(-1, 0)
+        )
     }
 }

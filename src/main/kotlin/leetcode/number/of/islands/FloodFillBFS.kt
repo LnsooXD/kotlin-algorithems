@@ -27,9 +27,9 @@ class FloodFillBFS : NumberOfIslands {
         while (queue.isNotEmpty()) {
             for (ignored in queue.indices) {
                 val node = queue.poll()
-                for (di in DI.indices) {
-                    val ni = node.i + DI[di]
-                    val nj = node.j + DJ[di]
+                for ((di, dj) in DIRECTIONS) {
+                    val ni = node.i + di
+                    val nj = node.j + dj
                     if (ni < m && nj < n && ni >= 0 && nj >= 0 && grid[ni][nj] == '1') {
                         grid[ni][nj] = '0'
                         queue.offer(Node(i = ni, j = nj))
@@ -42,7 +42,11 @@ class FloodFillBFS : NumberOfIslands {
     private data class Node(val i: Int, val j: Int)
 
     companion object {
-        val DI = intArrayOf(0, 0, 1, -1)
-        val DJ = intArrayOf(1, -1, 0, 0)
+        val DIRECTIONS = arrayOf(
+            intArrayOf(0, 1),
+            intArrayOf(0, -1),
+            intArrayOf(1, 0),
+            intArrayOf(-1, 0)
+        )
     }
 }
