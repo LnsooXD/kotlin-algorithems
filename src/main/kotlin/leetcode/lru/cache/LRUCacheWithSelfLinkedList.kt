@@ -5,7 +5,11 @@ class LRUCacheWithSelfLinkedList(private val capacity: Int) : LRUCacheI {
     private val nodeCache = HashMap<Int, Node>()
 
     override fun get(key: Int): Int {
-        val node = this.find(key)
+        var node = this.head.next
+        if (node.key == key) {
+            return node.value
+        }
+        node = this.find(key)
         if (node.key == key) {
             this.moveToFirst(node)
         }
@@ -13,7 +17,13 @@ class LRUCacheWithSelfLinkedList(private val capacity: Int) : LRUCacheI {
     }
 
     override fun put(key: Int, value: Int) {
-        val node = this.find(key)
+        var node = this.head.next
+        if (node.key == key) {
+            node.value = value
+            return
+        }
+
+        node = this.find(key)
         if (node.key == key) {
             node.value = value
             this.moveToFirst(node)
