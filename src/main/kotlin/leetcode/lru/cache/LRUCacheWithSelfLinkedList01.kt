@@ -1,0 +1,100 @@
+package leetcode.lru.cache
+
+class LRUCacheWithSelfLinkedList01(private val capacity: Int) : LRUCacheI {
+
+    private val nodeCache = Array<Node?>(10000) { null }
+
+    override fun get(key: Int): Int {
+        var node = this.head.next
+        if (node.key == key) {
+            return node.value
+        }
+        node = this.find(key)
+        if (node.key == key) {
+            this.moveToFirst(node)
+        }
+        return node.value
+    }
+
+    override fun put(key: Int, value: Int) {
+        var node = this.head.next
+        if (node.key == key) {
+            node.value = value
+            return
+        }
+
+        node = this.find(key)
+        if (node.key == key) {
+            node.value = value
+            this.moveToFirst(node)
+        } else {
+            val first = Node(key, value)
+            this.addFirst(first)
+            this.cache(first)
+        }
+    }
+
+    private val head = Node(-1, -1)
+    private val tail = Node(-1, -1)
+    private var size = 0
+
+    init {
+        head.prev = head
+        head.next = tail
+
+        tail.prev = head
+        tail.next = tail
+    }
+
+    private fun find(key: Int) = this.nodeCache[key] ?: this.tail
+
+    private fun moveToFirst(node: Node) {
+        if (this.head.next != node) {
+            this.remove(node)
+            this.addFirst(node)
+        }
+    }
+
+    private fun addFirst(node: Node) {
+        this.removeLastIfNeeded()
+
+        this.head.next.prev = node
+
+        node.next = this.head.next
+        node.prev = this.head
+
+        this.head.next = node
+
+        this.size++
+    }
+
+    private fun remove(node: Node) {
+        node.prev.next = node.next
+        node.next.prev = node.prev
+        this.size--
+    }
+
+    private fun cache(node: Node) {
+        this.nodeCache[node.key] = node
+        node.cached = true
+    }
+
+    private fun removeFromCache(node: Node) {
+        this.nodeCache[node.key] = null
+        node.cached = false
+    }
+
+    private fun removeLastIfNeeded() {
+        if (this.size >= this.capacity) {
+            val last = this.tail.prev
+            this.remove(last)
+            this.removeFromCache(last)
+        }
+    }
+
+    private class Node(val key: Int, var value: Int) {
+        lateinit var prev: Node
+        lateinit var next: Node
+        var cached = false
+    }
+}

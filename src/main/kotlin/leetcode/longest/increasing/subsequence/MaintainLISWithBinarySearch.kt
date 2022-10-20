@@ -17,29 +17,24 @@ class MaintainLISWithBinarySearch : LongestIncreasingSubsequence {
         return length
     }
 
+    // find the first index in the lis which value >= target
     private fun findTarget(lis: IntArray, length: Int, target: Int): Int {
-        if (length <= 0 || lis[length - 1] < target) {
-            return length
-        } else if (lis[0] >= target) {
-            return 0
-        }
-
         var left = 0
         var right = length - 1
-        var mid = right.ushr(1)
 
-        while (mid != left && mid != right) {
+        while (left <= right) {
+            val mid = (left + right).ushr(1)
             if (lis[mid] > target) {
-                right = mid
+                right = mid - 1
+            } else if (lis[mid] < target) {
+                left = mid + 1
             } else {
-                left = mid
+                return mid
             }
-            mid = (left + right).ushr(1)
         }
-        // there are only two situations:
-        // - lis[mid - 1] < target <= lis[mid]
-        // - lis[mid] < target <= lis[mid + 1]
-        // because: lis[0] < target <= lis[length - 1]
-        return if (target > lis[mid]) mid + 1 else mid
+
+        // left is the first index in the lis which value > target
+        // right is the last index in the lis which value < target
+        return left
     }
 }
