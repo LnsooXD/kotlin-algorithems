@@ -144,11 +144,6 @@ class LRUCacheWithSelfLinkedListAndSpareArray(private val capacity: Int) : LRUCa
             fun binarySearch(array: IntArray, size: Int, value: Int): Int {
                 var low = 0
                 var high = size - 1
-                if (array[low] == value) {
-                    return low
-                } else if (array[high] == value) {
-                    return high
-                }
                 while (low <= high) {
                     val mid = (low + high) ushr 1
                     val midVal = array[mid]
