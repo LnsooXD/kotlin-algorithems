@@ -43,6 +43,6 @@ internal class LRUCacheITest {
     }
 
     private fun newCache(capacity: Int): LRUCacheI {
-        return LRUCacheWithSelfLinkedList(capacity)
+        return LRUCacheWithLinkedHashMap(capacity)
     }
 }
