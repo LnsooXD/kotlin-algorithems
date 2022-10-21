@@ -46,7 +46,7 @@ class KthLargest(private val k: Int, nums: IntArray) {
     private val queue: Queue<Int>
 
     init {
-        this.queue = PriorityQueue(k)
+        this.queue = PriorityQueue(k + 1)
         for (num in nums) {
             this.add(num)
         }
