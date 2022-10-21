@@ -7,12 +7,16 @@ internal class KthLargestITest {
 
     @Test
     fun test() {
-        val kthLargest = BinarySort(3, intArrayOf(4, 5, 8, 2))
+        val kthLargest = this.obtainInstance(3, intArrayOf(4, 5, 8, 2))
         val inputs = intArrayOf(3, 5, 10, 9, 4)
 
         val res = inputs.map { kthLargest.add(it) }
 
         assertThat(res).isEqualTo(listOf(4, 5, 5, 8, 8))
+    }
+
+    private fun obtainInstance(k: Int, nums: IntArray): KthLargestI {
+        return KthLargestPriorityQueue(k, nums)
     }
 }
 
