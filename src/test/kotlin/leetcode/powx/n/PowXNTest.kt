@@ -6,7 +6,7 @@ import kotlin.math.pow
 
 internal class PowXNTest {
 
-    private val cores = arrayOf(DirectMultiply(), RecursiveBinDiv(), RecursiveBinDiv1(), LoopedBinDiv())
+    private val cores = arrayOf(DirectMultiply(), RecursiveBinDiv(), RecursiveBinDiv1(), LoopedBinDiv(), PowXN01())
     private val dataSet = arrayOf(
         TestData(
             x = 2.0,
