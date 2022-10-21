@@ -29,9 +29,7 @@ class BinarySort(override val k: Int, override val nums: IntArray) : KthLargestI
         while (low <= high) {
             val mid = (low + high) ushr 1
             val midValue = this.topk[mid]
-            if (midValue == value) {
-                return mid + 1
-            } else if (midValue > value) {
+            if (midValue > value) {
                 high = mid - 1
             } else {
                 low = mid + 1
