@@ -6,27 +6,39 @@ import kotlin.math.pow
 
 internal class PowXNTest {
 
-    private val cores = arrayOf(DirectMultiply(), RecursiveBinDiv(), RecursiveBinDiv1(), LoopedBinDiv(), PowXN01())
+    private val cores =
+        arrayOf(
+            DirectMultiply(),
+            RecursiveBinDiv(),
+            RecursiveBinDiv1(),
+            LoopedBinDiv(),
+            /*RecursiveBinDiv2(),*/
+            BinaryLoop()
+        )
     private val dataSet = arrayOf(
         TestData(
-            x = 2.0,
-            n = 10,
-            expected = 1024.0
+            x = 8.0,
+            n = 1
         ),
         TestData(
             x = 2.0,
-            n = -10,
-            expected = 2.0.pow(-10)
+            n = 10
         ),
         TestData(
             x = 2.0,
-            n = -20,
-            expected = 2.0.pow(-20)
+            n = -10
         ),
         TestData(
             x = 2.0,
-            n = -2147483648,
-            expected = 0.0
+            n = -20
+        ),
+        TestData(
+            x = 2.0,
+            n = Int.MIN_VALUE
+        ),
+        TestData(
+            x = 2.0,
+            n = Int.MAX_VALUE
         )
     )
 
@@ -41,13 +53,12 @@ internal class PowXNTest {
         for (core in this.cores) {
             assertThat(core.myPow(data.x, data.n))
                 .describedAs("${core.javaClass.simpleName}.myPow(x: ${data.x}, n: ${data.n})")
-                .isEqualTo(data.expected)
+                .isEqualTo(data.x.pow(data.n.toDouble()))
         }
     }
 
     private data class TestData(
         val x: Double,
-        val n: Int,
-        val expected: Double
+        val n: Int
     )
 }
