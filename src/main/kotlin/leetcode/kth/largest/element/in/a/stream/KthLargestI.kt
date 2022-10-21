@@ -1,7 +1,5 @@
 package leetcode.kth.largest.element.`in`.a.stream
 
-import java.util.*
-
 // 703. https://leetcode.com/problems/kth-largest-element-in-a-stream/
 /**
  * ## [703. Kth Largest Element in a Stream](https://leetcode.com/problems/kth-largest-element-in-a-stream/)
@@ -42,21 +40,8 @@ import java.util.*
  * - At most 104 calls will be made to add.
  * - It is guaranteed that there will be at least k elements in the array when you search for the kth element.
  **/
-class KthLargest(private val k: Int, nums: IntArray) {
-    private val queue: Queue<Int>
-
-    init {
-        this.queue = PriorityQueue(k + 1)
-        for (num in nums) {
-            this.add(num)
-        }
-    }
-
-    fun add(`val`: Int): Int {
-        this.queue.offer(`val`)
-        if (this.queue.size > this.k) {
-            this.queue.poll()
-        }
-        return this.queue.peek()
-    }
+interface KthLargestI {
+    val k: Int
+    val nums: IntArray
+    fun add(`val`: Int): Int
 }
