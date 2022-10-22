@@ -16,11 +16,10 @@ internal class MinHeapTest {
         heap.offer(2)
         assertThat(heap.peek()).isEqualTo(1)
 
-
-        assertThat(heap.balance(3)).isEqualTo(2)
+        assertThat(heap.enqueue(3)).isEqualTo(2)
         assertThat(heap.peek()).isEqualTo(2)
 
-        assertThat(heap.balance(1)).isEqualTo(1)
+        assertThat(heap.enqueue(1)).isEqualTo(2)
         assertThat(heap.peek()).isEqualTo(2)
     }
 

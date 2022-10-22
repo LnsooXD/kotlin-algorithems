@@ -14,29 +14,39 @@ class KthMinHeap01(override val k: Int, override val nums: IntArray) : KthLarges
             this.values[0] = `val`
             this.size++
         } else if (this.size < this.values.size) {
-
-            var index: Int
-            var parentIndex = this.size
-
-            this.values[parentIndex] = `val`
-            this.size++
-
-            do {
-                index = parentIndex
-                parentIndex = (index + 1).ushr(1) - 1
-            } while (parentIndex >= 0 && swap(parentIndex, index))
-
+            this.values[this.size++] = `val`
+            this.ascend()
         } else if (`val` > this.values[0]) {
             this.values[0] = `val`
-            var index = 0
-            do {
-                index = this.maintain(index)
-            } while (index >= 0)
+            this.descend()
         }
         return this.values[0]
     }
 
-    private fun maintain(parentIndex: Int): Int {
+    private fun ascend() {
+        var index = this.size - 1
+        do {
+            index = this.ascend(index)
+        } while (index >= 0)
+    }
+
+    private fun descend() {
+        var index = 0
+        do {
+            index = this.descend(index)
+        } while (index >= 0)
+    }
+
+    private fun ascend(index: Int): Int {
+        val parentIndex = (index + 1).ushr(1) - 1
+        return if (parentIndex >= 0 && this.swap(parentIndex, index)) {
+            parentIndex
+        } else {
+            -1
+        }
+    }
+
+    private fun descend(parentIndex: Int): Int {
         var targetIndex = parentIndex
         val index = parentIndex.shl(1) + 1
         if (index < this.size) {

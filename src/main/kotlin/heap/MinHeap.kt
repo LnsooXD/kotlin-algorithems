@@ -5,23 +5,13 @@ class MinHeap(capacity: Int) {
     var size = 0
         private set
 
-    var values = IntArray(capacity)
-        private set
+    private var values = IntArray(capacity)
 
     fun offer(value: Int): Int {
         this.expandIfNeeded()
-
-        var index: Int
-        var parentIndex = this.size
-
-        this.values[parentIndex] = value
+        this.values[this.size] = value
         this.size++
-
-        do {
-            index = parentIndex
-            parentIndex = ((index + 1) ushr 1) - 1
-        } while (this.swap(index, parentIndex))
-
+        this.ascend()
         return this.values[0]
     }
 
@@ -31,47 +21,39 @@ class MinHeap(capacity: Int) {
         if (this.size == 0) {
             return null
         }
-
         val min = this.values[0]
         this.values[0] = this.values[this.size - 1]
         this.size--
-        this.maintain()
+        this.descend()
         return min
     }
 
-    fun balance(value: Int): Int {
+    fun enqueue(value: Int): Int {
         if (this.size <= 0 || value < this.values[0]) {
             return this.values[0]
         }
         this.values[0] = value
-        this.maintain()
+        this.descend()
         return this.values[0]
     }
 
-    private fun maintain() {
+    private fun descend() {
         var index = 0
         do {
-            index = maintain(index)
+            index = descend(index)
         } while (index >= 0)
     }
 
-    private fun swap(bigger: Int, smaller: Int): Boolean {
-        if (bigger >= size || smaller >= size || bigger < 0 || smaller < 0) {
-            return false
-        }
-        val tmp = this.values[bigger]
-        if (tmp >= this.values[smaller]) {
-            return false
-        }
-        this.values[bigger] = this.values[smaller]
-        this.values[smaller] = tmp
-        return true
+    private fun ascend() {
+        var index = this.size - 1
+        do {
+            index = this.ascend(index)
+        } while (index >= 0)
     }
 
-    private fun maintain(parentIndex: Int): Int {
+    private fun descend(parentIndex: Int): Int {
         var targetIndex = parentIndex
-        val index = (parentIndex shl 1) + 1
-
+        val index = parentIndex.shl(1) + 1
         if (index < this.size) {
             if (this.values[index] < this.values[parentIndex]) {
                 targetIndex = index
@@ -80,11 +62,30 @@ class MinHeap(capacity: Int) {
                 targetIndex = index + 1
             }
         }
-        return if (targetIndex != parentIndex && swap(targetIndex, parentIndex)) {
+        return if (targetIndex != parentIndex && this.swap(parentIndex, targetIndex)) {
             targetIndex
         } else {
             -1
         }
+    }
+
+    private fun ascend(index: Int): Int {
+        val parentIndex = (index + 1).ushr(1) - 1
+        return if (parentIndex >= 0 && this.swap(parentIndex, index)) {
+            parentIndex
+        } else {
+            -1
+        }
+    }
+
+    private fun swap(smaller: Int, bigger: Int): Boolean {
+        val tmp = this.values[smaller]
+        if (tmp <= this.values[bigger]) {
+            return false
+        }
+        this.values[smaller] = this.values[bigger]
+        this.values[bigger] = tmp
+        return true
     }
 
     private fun expandIfNeeded() {

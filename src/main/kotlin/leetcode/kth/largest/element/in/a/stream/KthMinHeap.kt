@@ -10,9 +10,7 @@ class KthMinHeap(override val k: Int, override val nums: IntArray) : KthLargestI
     }
 
     override fun add(`val`: Int) = if (this.heap.size == this.k) {
-        this.heap.offer(`val`)
-        this.heap.poll()
-        this.heap.peek()!!
+        this.heap.enqueue(`val`)
     } else {
         this.heap.offer(`val`)
     }
