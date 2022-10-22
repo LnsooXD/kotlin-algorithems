@@ -1,6 +1,6 @@
 package leetcode
 
-// https://leetcode.cn/problems/reverse-linked-list/
+// 206. https://leetcode.cn/problems/reverse-linked-list/
 
 class ReverseLinkedList {
 
