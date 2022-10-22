@@ -5,19 +5,23 @@ class MinHeap(capacity: Int) {
     var size = 0
         private set
 
-    private var values = IntArray(capacity)
+    var values = IntArray(capacity)
+        private set
 
     fun offer(value: Int): Int {
         this.expandIfNeeded()
-        this.values[this.size] = value
 
-        var index = this.size
-        var parentIndex = ((index + 1) ushr 1) - 1
-        while (this.swap(index, parentIndex)) {
+        var index: Int
+        var parentIndex = this.size
+
+        this.values[parentIndex] = value
+        this.size++
+
+        do {
             index = parentIndex
             parentIndex = ((index + 1) ushr 1) - 1
-        }
-        this.size++
+        } while (this.swap(index, parentIndex))
+
         return this.values[0]
     }
 
@@ -46,31 +50,41 @@ class MinHeap(capacity: Int) {
 
     private fun maintain() {
         var index = 0
-        while (true) {
-            val baseIndex = index shl 1
-            val count = baseIndex.let { it + 1..it + 2 }
-                .map { this.swap(it, index) }
-                .map { if (it) 1 else 0 }
-                .reduce { a, b -> a + b }
-
-            if (count <= 0) {
-                break
-            }
-            index = baseIndex + count
-        }
+        do {
+            index = maintain(index)
+        } while (index >= 0)
     }
 
-    private fun swap(smaller: Int, bigger: Int): Boolean {
-        if (smaller >= size || bigger >= size || smaller < 0 || bigger < 0) {
+    private fun swap(bigger: Int, smaller: Int): Boolean {
+        if (bigger >= size || smaller >= size || bigger < 0 || smaller < 0) {
             return false
         }
-        val tmp = this.values[smaller]
-        if (tmp >= this.values[bigger]) {
+        val tmp = this.values[bigger]
+        if (tmp >= this.values[smaller]) {
             return false
         }
-        this.values[smaller] = this.values[bigger]
-        this.values[bigger] = tmp
+        this.values[bigger] = this.values[smaller]
+        this.values[smaller] = tmp
         return true
+    }
+
+    private fun maintain(parentIndex: Int): Int {
+        var targetIndex = parentIndex
+        val index = (parentIndex shl 1) + 1
+
+        if (index < this.size) {
+            if (this.values[index] < this.values[parentIndex]) {
+                targetIndex = index
+            }
+            if (index + 1 < this.size && this.values[index + 1] < this.values[index]) {
+                targetIndex = index + 1
+            }
+        }
+        return if (targetIndex != parentIndex && swap(targetIndex, parentIndex)) {
+            targetIndex
+        } else {
+            -1
+        }
     }
 
     private fun expandIfNeeded() {
