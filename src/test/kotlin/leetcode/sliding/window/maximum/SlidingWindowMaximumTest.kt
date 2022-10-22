@@ -1,11 +1,11 @@
-package leetcode
+package leetcode.sliding.window.maximum
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 internal class SlidingWindowMaximumTest {
 
-    private val core = SlidingWindowMaximum()
+    private val core = SlidingWindowMaximumPriorityQueue()
 
     @Test
     fun testMaxSlidingWindow01() {
