@@ -16,7 +16,7 @@ internal class KthLargestITest {
     }
 
     private fun obtainInstance(k: Int, nums: IntArray): KthLargestI {
-        return KthLargestPriorityQueue(k, nums)
+        return KthMinHeap(k, nums)
     }
 }
 
