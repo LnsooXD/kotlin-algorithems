@@ -11,7 +11,7 @@ internal class SlidingWindowMaximumTest {
     fun testMaxSlidingWindow01() {
         val nums = intArrayOf(1, 3, -1, -3, 5, 3, 6, 7)
         val k = 3
-        val res = this.core.maxSlidingWindowPriorityQueue(nums, k)
+        val res = this.core.maxSlidingWindow(nums, k)
         assertThat(res).isEqualTo(intArrayOf(3, 3, 5, 5, 6, 7))
     }
 
@@ -19,7 +19,7 @@ internal class SlidingWindowMaximumTest {
     fun testMaxSlidingWindow02() {
         val nums = intArrayOf(1, 3, -1, 2, 1, 3, 6, 7)
         val k = 3
-        val res = this.core.maxSlidingWindowPriorityQueue(nums, k)
+        val res = this.core.maxSlidingWindow(nums, k)
         assertThat(res).isEqualTo(intArrayOf(3, 3, 2, 3, 6, 7))
     }
 
@@ -27,7 +27,7 @@ internal class SlidingWindowMaximumTest {
     fun testMaxSlidingWindow03() {
         val nums = intArrayOf(1, 3, -2, -1, -3, 3, 6, 7)
         val k = 3
-        val res = this.core.maxSlidingWindowPriorityQueue(nums, k)
+        val res = this.core.maxSlidingWindow(nums, k)
         assertThat(res).isEqualTo(intArrayOf(3, 3, -1, 3, 6, 7))
     }
 

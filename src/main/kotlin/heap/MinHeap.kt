@@ -25,6 +25,7 @@ class MinHeap(capacity: Int) {
         this.values[0] = this.values[this.size - 1]
         this.size--
         this.descend()
+        this.trimIfNeeded()
         return min
     }
 
@@ -91,6 +92,15 @@ class MinHeap(capacity: Int) {
     private fun expandIfNeeded() {
         if (this.size >= values.size) {
             val newValues = IntArray(values.size shl 1)
+            System.arraycopy(values, 0, newValues, 0, this.size)
+            this.values = newValues
+        }
+    }
+
+    private fun trimIfNeeded() {
+        val targetSize = values.size ushr 1
+        if (this.size <= targetSize) {
+            val newValues = IntArray(targetSize)
             System.arraycopy(values, 0, newValues, 0, this.size)
             this.values = newValues
         }
