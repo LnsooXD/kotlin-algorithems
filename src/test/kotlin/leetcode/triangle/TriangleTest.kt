@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 
 internal class TriangleTest {
 
-    private val core = DPBottom2Top()
+    private val core = DFS02()
 
     @Test
     fun test() {
