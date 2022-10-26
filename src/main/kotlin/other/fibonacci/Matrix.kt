@@ -20,14 +20,14 @@ package other.fibonacci
  */
 class Matrix : FibonacciI {
 
-    override fun calculate(n: Int) = if (n == 0) 1 else pow(intArrayOf(1, 1, 1, 0), n - 1)[0]
+    override fun calculate(n: Int) = pow(intArrayOf(1, 1, 1, 0), n - 1)[0]
 
     private fun pow(matrix: IntArray, n: Int): IntArray {
         var res: IntArray = intArrayOf(1, 0, 0, 1)
         var tmp: IntArray = matrix
         var bits = n
 
-        while (bits != 0) {
+        while (bits > 0) {
             if (bits.and(1) == 1) {
                 res = this.mul(tmp, res)
             }
