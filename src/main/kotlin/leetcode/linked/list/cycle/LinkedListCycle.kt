@@ -1,12 +1,6 @@
-package leetcode
-
-// https://leetcode.cn/problems/linked-list-cycle/
+package leetcode.linked.list.cycle
 
 class LinkedListCycle {
-
-    class ListNode(var `val`: Int) {
-        var next: ListNode? = null
-    }
 
     fun hasCycle(head: ListNode?): Boolean {
         if (head?.next == null) {

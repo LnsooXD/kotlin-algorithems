@@ -2,8 +2,6 @@ package leetcode.reverse.linked.list
 
 import leetcode.struct.ListNode
 
-// 206. https://leetcode.com/problems/reverse-linked-list/
-
 class ReverseLinkedList {
 
     fun reverseListLooped(head: ListNode?): ListNode? {
