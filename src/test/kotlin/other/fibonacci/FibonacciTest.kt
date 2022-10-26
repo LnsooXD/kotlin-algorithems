@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 
 internal class FibonacciTest {
 
-    private val core = DPSmall()
+    private val core = Matrix()
 
     @Test
     fun test01() {

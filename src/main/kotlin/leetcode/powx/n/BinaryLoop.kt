@@ -5,7 +5,7 @@ class BinaryLoop : PowXN {
     override fun myPow(x: Double, n: Int): Double {
         var res = 1.0
         var bits = if (n < 0) -n else n
-        var tmp = if (n < 0) 1.0 / x else x
+        var tmp = if (n < 0) 1.0 / x else x // x^(2^0)
         // var m = 1, tmp = x^(2^m) = x^(2^1)
 
         // -Int.MIN_VALUE == Int.MIN_VALUE 可以认为 Int.MIN_VALUE 就是 Int.MAX_VALUE + 1, 只是把符号位置也用上了。
@@ -19,8 +19,9 @@ class BinaryLoop : PowXN {
                 res *= tmp // x^(1*2^0 + 1*2^1 + ... 0*2^(m-1)) * x^(1*2^m) = x^(1*2^0 + 1*2^1 + ... 0*2^(m-1) + 1*2^m)
             }
 
+
+            tmp *= tmp // tmp = x^(2^(m+1)) = x^(2^(m)) * x^(2^(m))
             // m ++
-            tmp *= tmp // tmp = x^(2^m) = x^(2^(m-1)) * x^(2^(m-1))
 
             bits = bits ushr 1
         }

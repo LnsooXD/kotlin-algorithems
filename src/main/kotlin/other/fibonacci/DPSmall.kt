@@ -8,11 +8,12 @@ class DPSmall : FibonacciI {
     // X & (2^N - 1)
 
     override fun calculate(n: Int): Int {
-        val fibs = IntArray(4) { 0 }
+        val fibs = IntArray(2) { 0 }
         fibs[1] = 1
 
         for (i in 2..n) {
-            fibs[i.and(3)] = fibs[(i - 1).and(3)] + fibs[(i - 2).and(3)]
+            // n 与 n - 2 同奇偶， 所以 n 会替换掉 n - 2， 但是保留 n - 1
+            fibs[(i).and(1)] = fibs[(i - 1).and(1)] + fibs[i.and(1)]
         }
 
         return fibs[n.and(3)]
