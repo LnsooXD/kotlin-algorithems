@@ -1,13 +1,11 @@
-package leetcode
+package leetcode.swap.nodes.`in`.pairs
 
 import leetcode.struct.ListNode
-
-// https://leetcode.cn/problems/swap-nodes-in-pairs/
 
 class SwapNodesInPairs {
 
     fun swapPairs(head: ListNode?): ListNode? {
-        val next  = head?.next ?: return head
+        val next = head?.next ?: return head
         head.next = swapPairs(next.next)
         next.next = head
         return next
