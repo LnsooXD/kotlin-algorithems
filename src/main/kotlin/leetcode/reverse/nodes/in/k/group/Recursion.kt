@@ -14,7 +14,7 @@ class Recursion : ReverseNodesInKGroupI {
         val next = head?.next ?: return if (i == k) head else tail
         return if (i == k) {
             tail.next = reverseKGroup(next, next, 1, k)
-            heads
+            head
         } else {
             val subTail = reverseKGroup(next, tail, i + 1, k)
             if (subTail != tail) {
