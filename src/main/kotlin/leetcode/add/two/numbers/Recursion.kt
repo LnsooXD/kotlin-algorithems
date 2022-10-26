@@ -1,6 +1,6 @@
 package leetcode.add.two.numbers
 
-import leetcode.ListNode
+import leetcode.struct.ListNode
 
 class Recursion : AddTwoNumbers {
     override fun addTwoNumbers(l1: ListNode?, l2: ListNode?): ListNode? {

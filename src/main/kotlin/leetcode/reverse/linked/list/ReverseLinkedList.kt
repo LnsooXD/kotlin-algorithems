@@ -1,6 +1,8 @@
-package leetcode
+package leetcode.reverse.linked.list
 
-// 206. https://leetcode.cn/problems/reverse-linked-list/
+import leetcode.struct.ListNode
+
+// 206. https://leetcode.com/problems/reverse-linked-list/
 
 class ReverseLinkedList {
 
@@ -12,7 +14,7 @@ class ReverseLinkedList {
         var curr = head
         var next = curr.next
 
-        while(next != null) {
+        while (next != null) {
             val tmp = next.next
             next.next = curr
 

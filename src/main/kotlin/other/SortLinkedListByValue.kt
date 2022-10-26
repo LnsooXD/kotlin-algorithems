@@ -1,6 +1,6 @@
 package other
 
-import leetcode.ListNode
+import leetcode.struct.ListNode
 
 // 给定一个链表， 用 value 把它分成两半， 小数值在左边，大数值在右边。
 // list = [5, 6, 1, 2, 3, 4],

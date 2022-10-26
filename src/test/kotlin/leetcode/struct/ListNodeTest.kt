@@ -1,8 +1,5 @@
 package leetcode.struct
 
-import leetcode.LoopedListNodeReverser
-import leetcode.RecursiveListNodeReverser
-import leetcode.listNodeOf
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 

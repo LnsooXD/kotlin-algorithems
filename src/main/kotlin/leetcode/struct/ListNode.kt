@@ -1,4 +1,4 @@
-package leetcode
+package leetcode.struct
 
 class ListNode(var `val`: Int) {
     var next: ListNode? = null

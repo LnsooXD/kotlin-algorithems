@@ -1,5 +1,7 @@
 package leetcode
 
+import leetcode.struct.ListNode
+
 // https://leetcode.cn/problems/merge-two-sorted-lists/
 
 class MergeTwoSortedLists {

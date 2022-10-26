@@ -1,6 +1,6 @@
 package leetcode.add.two.numbers
 
-import leetcode.ListNode
+import leetcode.struct.ListNode
 
 // 2. https://leetcode.com/problems/add-two-numbers/
 

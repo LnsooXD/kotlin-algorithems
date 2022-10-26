@@ -1,5 +1,7 @@
 package leetcode
 
+import leetcode.struct.ListNode
+
 // https://leetcode.cn/problems/remove-nth-node-from-end-of-list/submissions/
 
 class RemoveNthNodeFromEndOfList {

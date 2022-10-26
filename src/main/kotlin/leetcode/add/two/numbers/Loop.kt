@@ -1,6 +1,6 @@
 package leetcode.add.two.numbers
 
-import leetcode.ListNode
+import leetcode.struct.ListNode
 
 class Loop : AddTwoNumbers {
 

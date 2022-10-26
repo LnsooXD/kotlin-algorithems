@@ -1,5 +1,7 @@
 package leetcode
 
+import leetcode.struct.ListNode
+
 // https://leetcode.cn/problems/swap-nodes-in-pairs/
 
 class SwapNodesInPairs {

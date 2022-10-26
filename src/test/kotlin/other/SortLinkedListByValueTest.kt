@@ -1,6 +1,6 @@
 package other
 
-import leetcode.listNodeOf
+import leetcode.struct.listNodeOf
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
