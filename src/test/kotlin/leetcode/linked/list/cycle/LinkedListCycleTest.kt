@@ -9,7 +9,7 @@ internal class LinkedListCycleTest {
 
     @Test
     fun test00() {
-        val input = listNodeOf(1, 2, 3, 4)
+        val input = cycledListNodeOf(-1, 1, 2, 3, 4)
         val res = core.hasCycle(input)
         assertThat(res).isFalse()
     }
@@ -17,15 +17,14 @@ internal class LinkedListCycleTest {
 
     @Test
     fun test01() {
-        val input = listNodeOf(1, 2, 3, 4)
-        input?.next?.next = input
+        val input = cycledListNodeOf(3, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
         val res = core.hasCycle(input)
         assertThat(res).isTrue()
     }
 
     @Test
     fun test02() {
-        val input = ListNode(1)
+        val input = cycledListNodeOf(-1, 1)
         val res = core.hasCycle(input)
         assertThat(res).isFalse()
     }
