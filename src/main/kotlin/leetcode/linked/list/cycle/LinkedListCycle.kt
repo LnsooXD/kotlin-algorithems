@@ -1,5 +1,7 @@
 package leetcode.linked.list.cycle
 
+import leetcode.struct.ListNode
+
 class LinkedListCycle {
 
     fun hasCycle(head: ListNode?): Boolean {

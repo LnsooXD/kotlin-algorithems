@@ -1,6 +1,6 @@
 package leetcode.linked.list.cycle.ii
 
-import leetcode.linked.list.cycle.cycledListNodeOf
+import leetcode.struct.cycledListNodeOf
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 

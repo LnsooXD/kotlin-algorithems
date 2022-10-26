@@ -1,5 +1,6 @@
 package leetcode.linked.list.cycle
 
+import leetcode.struct.cycledListNodeOf
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 

@@ -1,10 +1,8 @@
-package leetcode
+package leetcode.reverse.nodes.`in`.k.group
 
 import leetcode.struct.ListNode
 
-// https://leetcode.cn/problems/reverse-nodes-in-k-group/
-
-class ReverseNodesInKGroup {
+class ReverseNodesInKGroupOld {
 
     fun reverseKGroup(head: ListNode?, k: Int): ListNode? {
         if (head?.next == null) {

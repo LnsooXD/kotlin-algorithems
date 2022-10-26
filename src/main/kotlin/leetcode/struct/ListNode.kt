@@ -3,47 +3,35 @@ package leetcode.struct
 class ListNode(var `val`: Int) {
     var next: ListNode? = null
 
-    override fun toString(): String {
-        val res = mutableListOf<Int>()
+    override fun toString() = this.toList().toString()
 
-        var p: ListNode? = this
-        while (true) {
-            res.add(p!!.`val`)
-            p = p.next
-            if (p == null) {
-                break
-            }
+    fun toList(): List<Int> {
+        val list = mutableListOf<Int>()
+        val cache = mutableSetOf<ListNode>()
+        var node: ListNode? = this
+        while (node != null && cache.add(node)) {
+            list.add(node.`val`)
+            node = node.next
         }
+        return list
+    }
 
-        return res.toString()
+    fun hasCycle(): Boolean {
+        var slow: ListNode? = this
+        var fast = this.next
+
+        while (slow != null && fast != null) {
+            if (slow == fast) {
+                return true
+            }
+            slow = slow.next
+            fast = fast.next?.next
+
+        }
+        return false
     }
 
     fun reverse() = this.reverser.reverse(this)
-
-    override fun equals(other: Any?): Boolean {
-        if (other == null || other !is ListNode) {
-            return false
-        }
-
-        if (this.`val` != other.`val`) {
-            return false
-        }
-
-        val thisNext = this.next
-        val otherNext = other.next
-
-        if (thisNext == null) {
-            return otherNext == null
-        }
-
-        return thisNext == otherNext
-    }
-
-    override fun hashCode(): Int {
-        var result = this.`val`
-        result = 31 * result + (this.next?.hashCode() ?: 0)
-        return result
-    }
 
     private val reverser: ListNodeReverser = LoopedListNodeReverser()
 }
@@ -56,6 +44,24 @@ fun listNodeOf(vararg elements: Int): ListNode? = if (elements.isNotEmpty()) {
         val next = ListNode(elements[i])
         curr.next = next
         curr = next
+    }
+    head
+} else null
+
+fun cycledListNodeOf(pos: Int, vararg elements: Int): ListNode? = if (elements.isNotEmpty()) {
+    val head = ListNode(elements[0])
+    var curr = head
+    if (pos == 0) {
+        curr.next = curr
+    }
+    for (i in 1 until elements.size) {
+        val next = ListNode(elements[i])
+        next.next = curr.next
+        curr.next = next
+        curr = next
+        if (pos == i) {
+            curr.next = curr
+        }
     }
     head
 } else null

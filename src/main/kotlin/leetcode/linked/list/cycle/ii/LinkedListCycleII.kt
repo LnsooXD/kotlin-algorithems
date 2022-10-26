@@ -1,6 +1,6 @@
 package leetcode.linked.list.cycle.ii
 
-import leetcode.linked.list.cycle.ListNode
+import leetcode.struct.ListNode
 
 // 142. https://leetcode.com/problems/linked-list-cycle-ii/
 

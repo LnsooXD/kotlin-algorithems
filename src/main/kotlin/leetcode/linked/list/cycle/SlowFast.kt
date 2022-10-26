@@ -1,5 +1,7 @@
 package leetcode.linked.list.cycle
 
+import leetcode.struct.ListNode
+
 // 2022-10-26
 class SlowFast : LinkedListCycleI {
 
