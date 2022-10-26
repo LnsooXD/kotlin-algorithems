@@ -16,14 +16,14 @@ class Recursion : ReverseNodesInKGroupI {
             tail.next = reverseKGroup(next, next, 1, k)
             head
         } else {
-            val subTail = reverseKGroup(next, tail, i + 1, k)
-            if (subTail != tail) {
+            val subHead = reverseKGroup(next, tail, i + 1, k)
+            if (subHead != tail) {
                 next.next = head
                 if (head.next == next) {
                     head.next = null
                 }
             }
-            subTail
+            subHead
         }
     }
 
