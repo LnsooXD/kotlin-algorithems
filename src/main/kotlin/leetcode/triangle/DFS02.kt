@@ -15,7 +15,7 @@ class DFS02 : Triangle {
             )
 
     companion object {
-        fun min(x: Int, y: Int) = if (x < y) x else y
+        fun min(vararg args: Int) = args.reduce { acc, i -> if (acc < i) acc else i }
     }
 
 }
