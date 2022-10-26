@@ -1,6 +1,7 @@
 package other.fibonacci
 
 /**
+ * ```
  * ┏                ┓   ┏                ┓    ┏       ┓
  * ┃ f(n)    f(n-1) ┃ = ┃ f(n-1)  f(n-2) ┃ x  ┃ 1   1 ┃
  * ┃ f(n-1)  f(n-2) ┃   ┃ f(n-2)  f(n-3) ┃    ┃ 1   0 ┃
@@ -15,6 +16,7 @@ package other.fibonacci
  * ┃ f(n)    f(n-1) ┃ = ┃ 1   1 ┃ ^ (n-1)
  * ┃ f(n-1)  f(n-2) ┃   ┃ 1   0 ┃
  * ┗                ┛   ┗       ┛
+ * ```
  */
 class Matrix : FibonacciI {
 
@@ -42,10 +44,12 @@ class Matrix : FibonacciI {
     }
 
     /**
+     * ```
      * ┏                      ┓
      * ┃ matrix[0]  matrix[1] ┃
      * ┃ matrix[2]  matrix[3] ┃
      * ┗                      ┛
+     * ```
      **/
     private fun mul(matrixFirst: IntArray, matrixSecond: IntArray) = MUL_COEFFICIENTS.map {
         matrixFirst[it[0]] * matrixSecond[it[1]] + matrixFirst[it[2]] * matrixSecond[it[3]]
