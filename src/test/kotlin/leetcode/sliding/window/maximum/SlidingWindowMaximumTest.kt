@@ -7,7 +7,7 @@ import java.io.File
 
 internal class SlidingWindowMaximumTest {
 
-    private val core = DoublePointers()
+    private val core = SlidingWindowMaximumDeque()
 
     @Test
     fun testMaxSlidingWindow01() {
@@ -60,12 +60,13 @@ internal class SlidingWindowMaximumTest {
 
     @Test
     fun testMaxSlidingWindow07() {
-
         val dataDir =
             "${javaClass.packageName.replace(".", "/")}${File.separatorChar}testMaxSlidingWindow06${File.separatorChar}"
         val nums = In(javaClass.classLoader.getResource("${dataDir}nums.txt")).readAllInts()
         val k = 50000
+        val start = System.nanoTime()
         val res = this.core.maxSlidingWindow(nums, k)
+        println("time cost: ${System.nanoTime() - start} ns")
         val expected = In(javaClass.classLoader.getResource("${dataDir}expected.txt")).readAllInts()
         assertThat(res).isEqualTo(expected)
     }
