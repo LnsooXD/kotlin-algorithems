@@ -2,7 +2,7 @@ package leetcode.reverse.linked.list
 
 import leetcode.struct.ListNode
 
-// 2022-10-26
+// DATE 2022-10-26
 class Recursion : ReverseLinkedListI {
 
     override fun reverseList(head: ListNode?): ListNode? {

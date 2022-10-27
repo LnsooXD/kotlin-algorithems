@@ -1,5 +1,6 @@
 package leetcode.longest.substring.without.repeating.characters
 
+// DATE 2022-10-27
 class Rude : LongestSubstringWithoutRepeatingCharactersI {
 
     override fun lengthOfLongestSubstring(s: String): Int {

@@ -1,7 +1,7 @@
 package leetcode.triangle
 
 
-// 2022-10-26 Wed
+// DATE 2022-10-26 Wed
 class DFS02 : Triangle {
     override fun minimumTotal(triangle: List<List<Int>>) = this.minimumTotal(triangle, 0, 0)
 

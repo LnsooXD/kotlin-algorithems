@@ -1,6 +1,6 @@
 package leetcode.triangle
 
-// 2022-10-26 Wed
+// DATE 2022-10-26 Wed
 class DP02 : Triangle {
 
     override fun minimumTotal(triangle: List<List<Int>>): Int {

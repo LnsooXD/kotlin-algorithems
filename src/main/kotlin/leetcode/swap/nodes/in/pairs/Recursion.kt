@@ -2,7 +2,7 @@ package leetcode.swap.nodes.`in`.pairs
 
 import leetcode.struct.ListNode
 
-// 2022-10-26
+// DATE 2022-10-26
 class Recursion : SwapNodesInPairsI {
     override fun swapPairs(head: ListNode?): ListNode? {
         val next = head?.next ?: return head
