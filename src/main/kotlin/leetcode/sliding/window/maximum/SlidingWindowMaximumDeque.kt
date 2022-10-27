@@ -6,7 +6,7 @@ class SlidingWindowMaximumDeque : SlidingWindowMaximumI {
     override fun maxSlidingWindow(nums: IntArray, k: Int): IntArray {
         if (nums.isEmpty()) {
             return intArrayOf()
-        }s
+        }
 
         val kk = k - 1
         val queue: Deque<Int> = ArrayDeque(k)
