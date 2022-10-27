@@ -13,7 +13,7 @@ class Recursion : ReverseNodesInKGroupI {
     private fun reverseKGroup(head: ListNode?, tail: ListNode, i: Int, k: Int): ListNode? {
         val next = head?.next ?: return if (i == k) head else tail
         return if (i == k) {
-            tail.next = reverseKGroup(next, next, 1, k)
+            tail.next = this.reverseKGroup(next, k)
             head
         } else {
             val subHead = reverseKGroup(next, tail, i + 1, k)
