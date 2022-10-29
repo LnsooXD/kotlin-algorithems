@@ -1,10 +1,11 @@
-package leetcode
+package leetcode.median.of.two.sorted.arrays
 
-// https://leetcode.cn/problems/median-of-two-sorted-arrays/
+// 4. https://leetcode.cn/problems/median-of-two-sorted-arrays/
 
-class MedianOfTwoSortedArrays {
+// DATE 2022-09-18
+class MedianOfTwoSortedArraysOld {
 
-    fun findKLargeNum(nums1: IntArray, nums2: IntArray, k: Int): Int {
+    private fun findKLargeNum(nums1: IntArray, nums2: IntArray, k: Int): Int {
         val length1 = nums1.size
         val length2 = nums2.size
 
