@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 
 internal class MedianOfTwoSortedArraysTest {
 
-    private val core = Rude()
+    private val core = KLargest()
 
     @Test
     fun test01() {
@@ -45,5 +45,13 @@ internal class MedianOfTwoSortedArraysTest {
         val nums2 = intArrayOf(3, 4)
         val res = this.core.findMedianSortedArrays(nums1, nums2)
         assertThat(res).isEqualTo(2.5)
+    }
+
+    @Test
+    fun test06() {
+        val nums1 = intArrayOf(0, 0)
+        val nums2 = intArrayOf(0, 0)
+        val res = this.core.findMedianSortedArrays(nums1, nums2)
+        assertThat(res).isEqualTo(0.0)
     }
 }
