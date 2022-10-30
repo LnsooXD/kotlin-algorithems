@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 
 internal class ZigzagConversionTest {
 
-    private val core = ByLaw()
+    private val core = DirectlyString()
 
     @Test
     fun test01() {
