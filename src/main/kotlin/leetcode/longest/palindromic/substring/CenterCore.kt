@@ -3,6 +3,7 @@ package leetcode.longest.palindromic.substring
 import leetcode.annotation.SolvingDate
 
 @SolvingDate(2022, 10, 30)
+// 从中心向两边扩散，每一次新的扩散利用了前一次的缓存，即：上一次扩散是这一次是回文的前提
 class CenterCore : LongestPalindromicSubstring {
     override fun longestPalindrome(s: String): String {
         var longestPalindrome = ""
