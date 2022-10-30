@@ -6,17 +6,17 @@ import leetcode.annotation.SolvingDate
 class Directly : ZigzagConversion {
     override fun convert(s: String, numRows: Int): String {
         if (numRows <= 1) {
-            return  s
+            return s
         }
         val rows = Array(numRows) { CharArray(s.length) }
         val cols = IntArray(numRows) { 0 }
 
         var row = 0
-        var direction = 1
+        var direction = -1 // 第一个节点也可以认为是一个转折点，从之前的 direction == -1 时转折过来
 
         for (i in s.indices) {
             rows[row][cols[row]++] = s[i]
-            if ((row == numRows - 1 && direction > 0) || (row == 0 && direction < 0)) {
+            if (row == numRows - 1 || row == 0) {
                 direction = -direction
             }
             row += direction

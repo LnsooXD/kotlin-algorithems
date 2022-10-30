@@ -10,10 +10,10 @@ class DirectlyString : ZigzagConversion {
         }
         val rows = Array(numRows) { StringBuffer() }
         var row = 0
-        var direction = 1
+        var direction = -1 // 第一个节点也可以认为是一个转折点，从之前的 direction == -1 时转折过来
         for (i in s.indices) {
             rows[row].append(s[i])
-            if ((row == numRows - 1 && direction > 0) || (row == 0 && direction < 0)) {
+            if (row == numRows - 1 || row == 0) {
                 direction = -direction
             }
             row += direction
