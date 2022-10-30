@@ -4,7 +4,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 internal class LongestPalindromicSubstringTest {
-    private val core = Rude()
+    private val core = CenterCore()
 
     @Test
     fun test01() {
