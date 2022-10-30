@@ -1,6 +1,8 @@
 package leetcode.longest.palindromic.substring
 
-// DATE 2022-10-30
+import leetcode.annotation.SolvingDate
+
+@SolvingDate(2022, 10, 30)
 class Rude : LongestPalindromicSubstring {
     override fun longestPalindrome(s: String): String {
         if (s.length <= 1) {
