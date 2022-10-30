@@ -31,5 +31,23 @@ internal class ZigzagConversionTest {
         assertThat(res).isEqualTo("PINALSIGYAHRPI")
     }
 
+    @Test
+    fun test04() {
+        val s = "AB"
+        val numRows = 1
+        val res = this.core.convert(s, numRows)
+        assertThat(res).isEqualTo("AB")
+    }
+
+    @Test
+    fun test05() {
+        val s = "ABCDEFGH"
+        val numRows = 2
+        val res = this.core.convert(s, numRows)
+        assertThat(res).isEqualTo("ACEGBDFH")
+    }
+
+
+
 
 }

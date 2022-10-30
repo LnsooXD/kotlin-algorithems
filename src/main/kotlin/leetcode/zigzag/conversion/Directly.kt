@@ -5,6 +5,9 @@ import leetcode.annotation.SolvingDate
 @SolvingDate(2022, 10, 30)
 class Directly : ZigzagConversion {
     override fun convert(s: String, numRows: Int): String {
+        if (numRows <= 1) {
+            return  s
+        }
         val rows = Array(numRows) { CharArray(s.length) }
         val cols = IntArray(numRows) { 0 }
 
