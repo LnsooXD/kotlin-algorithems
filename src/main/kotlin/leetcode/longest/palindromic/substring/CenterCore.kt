@@ -1,5 +1,8 @@
 package leetcode.longest.palindromic.substring
 
+import leetcode.annotation.SolvingDate
+
+@SolvingDate(2022, 10, 30)
 class CenterCore : LongestPalindromicSubstring {
     override fun longestPalindrome(s: String): String {
         var longestPalindrome = ""

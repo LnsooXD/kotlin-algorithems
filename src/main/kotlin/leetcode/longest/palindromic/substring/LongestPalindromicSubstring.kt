@@ -1,5 +1,7 @@
 package leetcode.longest.palindromic.substring
 
+import leetcode.annotation.ProblemSoruce
+
 // 5. https://leetcode.com/problems/longest-palindromic-substring/
 /**
  * ## [5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/)
@@ -24,6 +26,7 @@ package leetcode.longest.palindromic.substring
  * - 1 <= s.length <= 1000
  * - s consist of only digits and English letters.
  **/
+@ProblemSoruce(5, "Longest Palindromic Substring", "https://leetcode.com/problems/longest-palindromic-substring/")
 interface LongestPalindromicSubstring {
     fun longestPalindrome(s: String): String
 }
