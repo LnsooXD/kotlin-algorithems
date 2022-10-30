@@ -12,7 +12,7 @@ class CenterCore : LongestPalindromicSubstring {
             if (longestPalindrome.length < s1.length) {
                 longestPalindrome = s1
             }
-            if (i + 1 < s.length) {
+            if (i + 1 < s.length && s[i] == s[i + 1]) {
                 val s2 = longestPalindrome(s, i, i + 1)
                 if (longestPalindrome.length < s2.length) {
                     longestPalindrome = s2
