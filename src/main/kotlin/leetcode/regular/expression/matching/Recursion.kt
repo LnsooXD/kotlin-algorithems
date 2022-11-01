@@ -12,16 +12,16 @@ class Recursion : RegularExpressionMatching {
         val ps = p[0]
         val isAny = ps == '.'
         val hasStar = p.length >= 2 && p[1] == '*'
+        val nextP = p.substring(if (hasStar) 2 else 1)
 
         if (!hasStar) {
             return if (s.isEmpty() || !(isAny || ps == s[0])) {
                 false
             } else {
-                isMatch(s.substring(1), p.substring(1))
+                isMatch(s.substring(1), nextP)
             }
         }
 
-        val nextP = p.substring(2)
         if (isMatch(s, nextP)) {
             return true
         }
