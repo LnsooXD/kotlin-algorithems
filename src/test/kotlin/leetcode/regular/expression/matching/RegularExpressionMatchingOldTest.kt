@@ -1,13 +1,12 @@
-package leetcode
+package leetcode.regular.expression.matching
 
-import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.Test
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Test
 
 
-internal class RegularExpressionMatchingTest {
+internal class RegularExpressionMatchingOldTest {
 
-    private val matcher = RegularExpressionMatching()
+    private val matcher = RegularExpressionMatchingOld()
 
     @Test
     fun test() {

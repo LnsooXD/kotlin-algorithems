@@ -1,13 +1,8 @@
-package leetcode
+package leetcode.regular.expression.matching
 
 // https://leetcode.cn/problems/regular-expression-matching/
 
-fun main(args: Array<String>) {
-
-}
-
-
-class RegularExpressionMatching {
+class RegularExpressionMatchingOld {
 
     fun isMatch(s: String, p: String): Boolean {
 
