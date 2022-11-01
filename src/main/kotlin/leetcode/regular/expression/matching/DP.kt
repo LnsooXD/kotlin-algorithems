@@ -2,7 +2,8 @@ package leetcode.regular.expression.matching
 
 import leetcode.annotation.SolvingDate
 
-// 字符串匹配问题一律使用二维 DP，因为 s 和 p 都是动态变化的
+// 字符串匹配问题一律使用二维 DP，因为 s 和 p 都是动态变化的， 今天这里没想通如何使用 DP 来求解，主要就是没考虑到这一点
+// 只想到一维的匹配：只变化 pattern 或只变化 string
 // DP[0][0] == true : isMatch("", "")
 // DP[i][j] 表示 s[0..i] 和 p[0..j] 是否匹配
 // if (s[i-1] == p[j-1] or p[j-1] == '.') => DP[i][j] = DP[i-1][j-1]
@@ -23,7 +24,7 @@ class DP(override var count: Int) : RegularExpressionMatching {
 
         for (i in 1 until dp.size) {
             for (j in 2 until dp[i].size) {
-                this.count ++
+                this.count++
                 if (p[j - 1] == s[i - 1] || p[j - 1] == '.') {
                     dp[i][j] = dp[i - 1][j - 1]
                 } else if (p[j - 1] == '*') {
