@@ -4,7 +4,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 internal class RegularExpressionMatchingTest {
-    private val core = Recursion()
+    private val core = DP()
 
     @Test
     fun test01() {
@@ -78,5 +78,14 @@ internal class RegularExpressionMatchingTest {
         val res = this.core.isMatch(s, p)
         assertThat(res).describedAs("s = \"$s\", p = \"$p\"").isTrue()
     }
+
+    @Test
+    fun test010() {
+        val s = "aab"
+        val p = "c*a*b"
+        val res = this.core.isMatch(s, p)
+        assertThat(res).describedAs("s = \"$s\", p = \"$p\"").isTrue()
+    }
+
 
 }
