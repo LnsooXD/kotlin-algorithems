@@ -41,5 +41,8 @@ package leetcode.regular.expression.matching
  * - It is guaranteed for each appearance of the character '*', there will be a previous valid character to match.
  **/
 interface RegularExpressionMatching {
+
+    var count: Int
+
     fun isMatch(s: String, p: String): Boolean
 }

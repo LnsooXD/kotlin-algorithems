@@ -3,8 +3,9 @@ package leetcode.regular.expression.matching
 import leetcode.annotation.SolvingDate
 
 @SolvingDate(2022, 11, 1)
-class Recursion : RegularExpressionMatching {
+class Recursion(override var count: Int) : RegularExpressionMatching {
     override fun isMatch(s: String, p: String): Boolean {
+        this.count++
         if (p.isEmpty()) {
             return s.isEmpty()
         }

@@ -1,10 +1,22 @@
 package leetcode.regular.expression.matching
 
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 internal class RegularExpressionMatchingTest {
-    private val core = DP()
+    private val core = Recursion(0)
+
+    @BeforeEach
+    fun beforeEachTest() {
+        this.core.count = 0
+    }
+
+    @AfterEach
+    fun afterEachTest() {
+        println("count: ${this.core.count}")
+    }
 
     @Test
     fun test01() {
