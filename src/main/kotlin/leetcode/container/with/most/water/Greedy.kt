@@ -37,7 +37,7 @@ import leetcode.annotation.SolvingDate
 //   as j-i-n < j-i and min(height[i], height[j-1]) <= height[i]
 //   so: ((j-n)-i)  * min(height[i], height[j-1]) < (j-i) * min(height[i], height[j])
 //     => [2] < [1]
-// let height[i] >= height[j] then can get the same conclusion: [3] < [1]
+// let height[i] >= height[j] then can get the same conclusion: [3] < [1] // 剪枝
 //
 // so: if we want to get a lager amount, we must ditch the smaller one. Then, we may find a lager amount in the successive steps.
 
