@@ -1,9 +1,9 @@
-package leetcode
+package leetcode.container.with.most.water
 
 // https://leetcode.cn/problems/container-with-most-water/
 
 // https://leetcode.cn/problems/container-with-most-water/solution/on-shuang-zhi-zhen-jie-fa-li-jie-zheng-que-xing-tu/
-class ContainerWithMostWater {
+class ContainerWithMostWaterOld {
 
     fun maxArea(height: IntArray): Int {
         var maxArea = 0
@@ -32,7 +32,6 @@ class ContainerWithMostWater {
 
         return maxArea
     }
-
 
 
     fun max(a: Int, b: Int): Int {
