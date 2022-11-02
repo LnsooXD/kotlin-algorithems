@@ -8,8 +8,7 @@ class Rude : ContainerWithMostWater {
         var maxAmount = 0
         for (i in 0 until height.size - 1) {
             for (j in i + 1 until height.size) {
-                val amount = (j - i) * min(height[i], height[j])
-                maxAmount = max(amount, maxAmount)
+                maxAmount = max((j - i) * min(height[i], height[j]), maxAmount)
             }
         }
         return maxAmount
