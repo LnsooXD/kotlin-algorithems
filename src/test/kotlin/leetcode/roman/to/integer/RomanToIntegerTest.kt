@@ -4,7 +4,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 internal class RomanToIntegerTest {
-    private val core = TableAndLoop()
+    private val core = SimpleSwitch()
 
     @Test
     fun test01() {
