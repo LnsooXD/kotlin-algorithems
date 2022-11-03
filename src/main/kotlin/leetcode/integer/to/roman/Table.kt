@@ -9,18 +9,18 @@ class Table : IntegerToRoman {
         var value = num
         var index = 0
         while (value > 0) {
-            val digit = NUMS[index]
-            val sign = SIGNS[index]
-            while (value >= digit) {
-                value -= digit
-                this.append(sign)
+            val integer = INTEGERS[index]
+            val roman = ROMANS[index]
+            while (value >= integer) {
+                value -= integer
+                this.append(roman)
             }
             index++
         }
     }
 
     companion object {
-        val NUMS = intArrayOf(1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1)
-        val SIGNS = arrayOf("M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I")
+        val INTEGERS = intArrayOf(1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1)
+        val ROMANS = arrayOf("M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I")
     }
 }
