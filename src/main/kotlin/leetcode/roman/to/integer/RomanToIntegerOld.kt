@@ -1,8 +1,6 @@
-package leetcode
+package leetcode.roman.to.integer
 
 import java.lang.IllegalArgumentException
-import java.util.IllegalFormatException
-import javax.swing.UIManager.put
 
 // https://leetcode.cn/problems/roman-to-integer/
 
@@ -16,11 +14,11 @@ import javax.swing.UIManager.put
 
 
 fun main(args: Array<String>) {
-    println(RomanToInteger().romanToInt("LVIII"))
+    println(RomanToIntegerOld().romanToInt("LVIII"))
 }
 
 
-class RomanToInteger {
+class RomanToIntegerOld {
 
     private val table = mutableMapOf<String, Int>()
 
