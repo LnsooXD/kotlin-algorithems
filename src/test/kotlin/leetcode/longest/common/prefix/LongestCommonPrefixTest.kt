@@ -38,7 +38,7 @@ internal class LongestCommonPrefixTest {
     @Test
     fun testCost() {
         val strs = arrayOf("flower", "flow", "flight")
-            .map { str -> Array(10000000) { str } }
+            .map { str -> Array(1000000) { str } }
             .flatMap { it.toList() }
             .toTypedArray()
         val start = System.nanoTime()
