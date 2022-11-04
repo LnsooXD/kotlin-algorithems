@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 
 internal class LongestCommonPrefixTest {
 
-    private val core: LongestCommonPrefix = FirstStrAsTrie()
+    private val core: LongestCommonPrefix = FindMinMax()
 
     @Test
     fun test00() {
@@ -38,7 +38,7 @@ internal class LongestCommonPrefixTest {
     @Test
     fun testCost() {
         val strs = arrayOf("flower", "flow", "flight")
-            .map { str -> Array(100000) { str } }
+            .map { str -> Array(10000000) { str } }
             .flatMap { it.toList() }
             .toTypedArray()
         val start = System.nanoTime()
