@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 
 internal class LongestCommonPrefixTest {
 
-    private val core: LongestCommonPrefix = BinDiv()
+    private val core: LongestCommonPrefix = FirstStrAsTrie()
 
     @Test
     fun test00() {
