@@ -1,4 +1,4 @@
-package leetcode.threesum
+package leetcode.three.sum
 
 import leetcode.annotation.SolvingDate
 

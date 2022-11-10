@@ -1,10 +1,10 @@
-package leetcode
+package leetcode.three.sum
 
 import java.util.*
 
 // https://leetcode.cn/problems/3sum/
 
-class ThreeSum {
+class ThreeSumOld {
 
     fun threeSum(nums: IntArray): List<List<Int>> {
         val size = nums.size

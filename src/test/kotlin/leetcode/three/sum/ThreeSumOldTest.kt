@@ -1,10 +1,11 @@
-package leetcode
+package leetcode.three.sum
 
+import leetcode.three.sum.ThreeSumOld
 import org.junit.jupiter.api.Test
 
-internal class ThreeSumTest {
+internal class ThreeSumOldTest {
 
-    private val threeSum = ThreeSum()
+    private val threeSum = ThreeSumOld()
 
     @Test
     fun testThreeSum() {
