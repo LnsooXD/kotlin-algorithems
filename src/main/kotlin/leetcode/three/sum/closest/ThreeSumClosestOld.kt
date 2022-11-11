@@ -1,10 +1,10 @@
-package leetcode
+package leetcode.three.sum.closest
 
 import java.util.*
 
 // https://leetcode.cn/problems/3sum-closest/
 
-class ThreeSumClosest {
+class ThreeSumClosestOld {
 
     fun threeSumClosest(nums: IntArray, target: Int): Int {
         val size = nums.size

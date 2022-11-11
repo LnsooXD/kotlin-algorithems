@@ -1,11 +1,12 @@
-package leetcode
+package leetcode.three.sum.closest
 
+import leetcode.three.sum.closest.ThreeSumClosestOld
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
-internal class ThreeSumClosestTest {
+internal class ThreeSumClosestOldTest {
 
-    private val threeSumClosest = ThreeSumClosest()
+    private val threeSumClosest = ThreeSumClosestOld()
 
     @Test
     fun testThreeCloset() {
