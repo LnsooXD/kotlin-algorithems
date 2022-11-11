@@ -15,22 +15,23 @@ class ThreePointers : ThreeSumClosest {
             return sum
         }
 
-        var diff = abs(sum - target)
+        var diff = target - sum
 
         for (i in 0..nums.size - 3) {
             var j = i + 1
             var k = nums.size - 1
             while (j < k) {
                 val newSum = nums[i] + nums[j] + nums[k]
-                if (newSum == target) {
+                val newDiff = if (newSum == target) {
                     return newSum
                 } else if (newSum < target) {
                     j++
+                    target - newSum
                 } else {
                     k--
+                    newSum - target
                 }
 
-                val newDiff = abs(newSum - target)
                 if (newDiff < diff) {
                     diff = newDiff
                     sum = newSum
@@ -38,9 +39,5 @@ class ThreePointers : ThreeSumClosest {
             }
         }
         return sum
-    }
-
-    companion object {
-        fun abs(a: Int) = if (a < 0) -a else a
     }
 }
