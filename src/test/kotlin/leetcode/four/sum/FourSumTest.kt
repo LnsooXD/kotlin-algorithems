@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 
 internal class FourSumTest {
 
-    private val core = AsTwoSumHashMap()
+    private val core = AsThreeSunTwoPointers()
 
     @Test
     fun test01() {
