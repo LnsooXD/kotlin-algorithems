@@ -2,6 +2,7 @@ package leetcode.four.sum
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import kotlin.system.measureNanoTime
 
 internal class FourSumTest {
 
@@ -35,18 +36,33 @@ internal class FourSumTest {
 
     @Test
     fun test03() {
-        val nums = IntArray(200) { 2 }
+        val nums = IntArray(2000) { 2 }
         val target = 8
-        val res = this.core.fourSum(nums, target)
-        assertThat(res.toSet()).describedAs("nums=${nums.toList()}, target=$target").isEqualTo(
-            setOf(
-                listOf(2, 2, 2, 2).sorted()
+        val cost = measureNanoTime {
+            val res = this.core.fourSum(nums, target)
+            assertThat(res.toSet()).describedAs("nums=${nums.toList()}, target=$target").isEqualTo(
+                setOf(
+                    listOf(2, 2, 2, 2).sorted()
+                )
             )
-        )
+        }
+
+        println("cost: $cost ns")
     }
 
     @Test
     fun test04() {
+        val count = 100
+        val nums = IntArray(count) { it }
+        val target = count + count
+        val cost = measureNanoTime {
+            this.core.fourSum(nums, target)
+        }
+        println("cost: $cost ns")
+    }
+
+    @Test
+    fun test05() {
         val nums = intArrayOf(-3, -2, -1, 0, 0, 1, 2, 3)
         val target = 0
         val res = this.core.fourSum(nums, target)
@@ -66,7 +82,7 @@ internal class FourSumTest {
     }
 
     @Test
-    fun test05() {
+    fun test06() {
         val nums = intArrayOf(1000000000, 1000000000, 1000000000, 1000000000)
         val target = Int.MIN_VALUE
         val res = this.core.fourSum(nums, target)

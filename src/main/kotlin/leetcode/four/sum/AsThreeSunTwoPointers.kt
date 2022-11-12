@@ -5,8 +5,11 @@ import leetcode.annotation.SolvingDate
 @SolvingDate(2022, 11, 12)
 class AsThreeSunTwoPointers : FourSum {
     override fun fourSum(nums: IntArray, target: Int): List<List<Int>> {
-        val res = mutableSetOf<List<Int>>()
+        if (nums.size < 4) {
+            return emptyList()
+        }
         nums.sort()
+        val res = mutableSetOf<List<Int>>()
         for (i in 0..nums.size - 4) {
             for (j in i + 1..nums.size - 3) {
                 val subTarget = target.toLong() - nums[i] - nums[j]
