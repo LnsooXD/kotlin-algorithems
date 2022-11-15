@@ -5,7 +5,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 internal class RemoveNthNodeFromEndOfListTest {
-    private val core = Rude()
+    private val core = HashMapped()
 
     @Test
     fun testRemoveNthFromEnd1() {
@@ -19,7 +19,6 @@ internal class RemoveNthNodeFromEndOfListTest {
     @Test
     fun testRemoveNthFromEnd2() {
         val head = listNodeOf(1)
-        println(head)
         val n = 1
         val res = this.core.removeNthFromEnd(head, n)
         assertThat(res?.values ?: emptyList()).describedAs("head=${head?.values}, n=$n").isEqualTo(listOf<Int>())
@@ -29,7 +28,6 @@ internal class RemoveNthNodeFromEndOfListTest {
     @Test
     fun testRemoveNthFromEnd3() {
         val head = listNodeOf(1, 2)
-        println(head)
         val n = 2
         val res = this.core.removeNthFromEnd(head, n)
         assertThat(res?.values ?: emptyList()).describedAs("head=${head?.values}, n=$n").isEqualTo(listOf(2))
