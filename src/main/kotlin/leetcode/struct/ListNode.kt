@@ -3,37 +3,81 @@ package leetcode.struct
 class ListNode(var `val`: Int) {
     var next: ListNode? = null
 
-    override fun toString() = this.toList().toString()
-
-    fun toList(): List<Int> {
-        val list = mutableListOf<Int>()
-        val cache = mutableSetOf<ListNode>()
-        var node: ListNode? = this
-        while (node != null && cache.add(node)) {
-            list.add(node.`val`)
-            node = node.next
-        }
-        return list
-    }
-
-    fun hasCycle(): Boolean {
-        var slow: ListNode? = this
-        var fast = this.next
-
-        while (slow != null && fast != null) {
-            if (slow == fast) {
-                return true
+    val comparable: Any by lazy(LazyThreadSafetyMode.SYNCHRONIZED) { ListNodeComparable(this) }
+    val size: Int
+        get() {
+            val set = hashSetOf<ListNode>()
+            var node: ListNode? = this
+            while (node !== null && set.add(node)) {
+                node = node.next
             }
-            slow = slow.next
-            fast = fast.next?.next
-
+            return set.size
         }
-        return false
-    }
+
+
+    // i = a + x - 1 (x ∈ [0, b))
+    // slow_i = i + m * b = a + x - 1 + m * b (m ∈ [0, ∞))
+    // slow_steps = slow_i
+    //
+    // fast_i = slow_i + n * b  (n ∈ [1, ∞), n > m)
+    // [a] => fast_i - slow_i = n * b =>
+    // fast_steps = (fast_i - 1) / 2 => fast_i = 2 * fast_steps + 1 => fast_i 是奇数
+    // [b] fast_steps = (slow_i + n * b - 1) / 2 = (a + x - 1 + m * b + n * b - 1 ) / 2 = (a + x + (m + n) * b) / 2 - 1
+    // => (a + x + (m + n) * b)  是偶数
+    // fast_i - slow_i = n * b => 2 * fast_steps + 1 - slow_i = n * b
+    // => [c] 2 * fast_steps + 1 - slow_steps = n * b
+    // ∵ fast_steps = slow_steps, 令: slow_steps = steps
+    // [c] => steps + 1 = n * b
+    // steps + 1 >= a => n * b >= a
+    // steps + 1 = a + x = n * b
+    // m = 0 => a + x - 1 = steps => a + x >= a 成立, 说明 m = 0 有解，即说明slow在第0圈就可以和fast相遇
+    // size = a + b - 1
+    // size = (steps + 1) / n + a - 1
+    // a + x < size
+    //
+    val cycleSize: Int
+        get() {
+            val cycledMarkNode = this.cycledMarkNode() ?: return 0
+            var node = cycledMarkNode.next
+            var size = 1
+            while (node !== cycledMarkNode) {
+                node = node?.next
+                size++
+            }
+            return size
+        }
+
+    val values: List<Int>
+        get() {
+            val list = mutableListOf<Int>()
+            val set = mutableSetOf<ListNode>()
+            var node: ListNode? = this
+            while (node != null && set.add(node)) {
+                list.add(node.`val`)
+                node = node.next
+            }
+            return list
+        }
+
+
+    override fun toString() = "values:${this.values} cycleSize: ${this.cycleSize}"
+
+
+    fun hasCycle() = this.cycledMarkNode() !== null
 
     fun reverse() = this.reverser.reverse(this)
 
     private val reverser: ListNodeReverser = LoopedListNodeReverser()
+
+    private fun cycledMarkNode(): ListNode? {
+        var slow: ListNode? = this
+        var fast = this.next
+        while (fast !== null && slow !== fast) {
+            slow = slow?.next
+            fast = fast.next?.next
+        }
+        return fast
+    }
 }
 
 fun listNodeOf(vararg elements: Int): ListNode? = if (elements.isNotEmpty()) {
@@ -75,7 +119,7 @@ class LoopedListNodeReverser : ListNodeReverser {
         var res = node
         var next = res.next
         res.next = null
-        while (next != null) {
+        while (next !== null) {
             val nnext = next.next
             next.next = res
             res = next
@@ -107,5 +151,28 @@ class RecursiveListNodeReverser : ListNodeReverser {
         // 返回完整链表
         return reversed
     }
+
+}
+
+private class ListNodeComparable(private val self: ListNode?) {
+    override fun equals(other: Any?): Boolean {
+        if (this.self === other || this === other) {
+            return true
+        } else if ((other !is ListNode && other !is ListNodeComparable) || this.self == null) {
+            return false
+        } else if (other is ListNodeComparable) {
+            return this.equals(other.self)
+        }
+
+        if (other !is ListNode) {
+            return false
+        }
+
+        return this.self.cycleSize == other.cycleSize && this.self.values == other.values
+    }
+
+    override fun toString() = this.self.toString()
+
+    override fun hashCode() = this.self?.values.hashCode() + this.self?.cycleSize.hashCode()
 
 }

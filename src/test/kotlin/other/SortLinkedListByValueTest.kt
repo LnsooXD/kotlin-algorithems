@@ -14,7 +14,7 @@ internal class SortLinkedListByValueTest {
         val value = 3
         val res = this.core.sort(list, value)
 
-        assertThat(res?.toList()).isEqualTo(listOf(1, 2, 3, 5, 6, 4))
+        assertThat(res?.values).isEqualTo(listOf(1, 2, 3, 5, 6, 4))
     }
 
 }

@@ -13,7 +13,7 @@ internal class ReverseNodesInKGroupTest {
         val head = listNodeOf(1, 2)
         val res = this.core.reverseKGroup(head, 2)
         assertThat(res?.hasCycle()).isFalse()
-        assertThat(res?.toList()).isEqualTo(listOf(2, 1))
+        assertThat(res?.values).isEqualTo(listOf(2, 1))
     }
 
     @Test
@@ -21,7 +21,7 @@ internal class ReverseNodesInKGroupTest {
         val head = listNodeOf(1, 2, 3, 4, 5)
         val res = this.core.reverseKGroup(head, 2)
         assertThat(res?.hasCycle()).isFalse()
-        assertThat(res?.toList()).isEqualTo(listOf(2, 1, 4, 3, 5))
+        assertThat(res?.values).isEqualTo(listOf(2, 1, 4, 3, 5))
     }
 
     @Test
@@ -29,7 +29,7 @@ internal class ReverseNodesInKGroupTest {
         val head = listNodeOf(1, 2, 3, 4, 5)
         val res = this.core.reverseKGroup(head, 3)
         assertThat(res?.hasCycle()).isFalse()
-        assertThat(res?.toList()).isEqualTo(listOf(3, 2, 1, 4, 5))
+        assertThat(res?.values).isEqualTo(listOf(3, 2, 1, 4, 5))
     }
 
     @Test
@@ -37,7 +37,7 @@ internal class ReverseNodesInKGroupTest {
         val head = listNodeOf(1, 2)
         val res = this.core.reverseKGroup(head, 3)
         assertThat(res?.hasCycle()).isFalse()
-        assertThat(res?.toList()).isEqualTo(listOf(1, 2))
+        assertThat(res?.values).isEqualTo(listOf(1, 2))
     }
 
 }
