@@ -5,7 +5,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 internal class RemoveNthNodeFromEndOfListTest {
-    private val core = HashMapped()
+    private val core = ArrayIndexed()
 
     @Test
     fun testRemoveNthFromEnd1() {
