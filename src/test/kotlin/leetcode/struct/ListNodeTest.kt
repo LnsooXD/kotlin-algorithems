@@ -109,5 +109,26 @@ internal class ListNodeTest {
         assertThat(cycleSize).isEqualTo(5)
     }
 
+    @Test
+    fun testCycle00() {
+        val input = cycledListNodeOf(-1, 1, 2, 3, 4)
+        val res = input?.hasCycle()
+        assertThat(res).isFalse()
+    }
+
+
+    @Test
+    fun testCycle01() {
+        val input = cycledListNodeOf(3, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+        val res = input?.hasCycle()
+        assertThat(res).isTrue()
+    }
+
+    @Test
+    fun testCycle02() {
+        val input = cycledListNodeOf(-1, 1)
+        val res = input?.hasCycle()
+        assertThat(res).isFalse()
+    }
 
 }

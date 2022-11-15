@@ -1,8 +1,10 @@
 package leetcode.linked.list.cycle
 
+import leetcode.annotation.SolvingDate
 import leetcode.struct.ListNode
 
 // DATE 2022-10-26
+@SolvingDate(2022, 10, 26)
 class SlowFast : LinkedListCycleI {
 
     override fun hasCycle(head: ListNode?): Boolean {
