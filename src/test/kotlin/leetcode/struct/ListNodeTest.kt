@@ -54,6 +54,13 @@ internal class ListNodeTest {
     }
 
     @Test
+    fun testCycleSize00() {
+        val list = listNodeOf(1, 2, 3, 4, 5) ?: throw IllegalArgumentException("list is null")
+        val cycleSize = list.cycleSize
+        assertThat(cycleSize).isEqualTo(0)
+    }
+
+    @Test
     fun testCycleSize01() {
         val list = cycledListNodeOf(1, 1, 2, 3, 4, 5) ?: throw IllegalArgumentException("list is null")
         val cycleSize = list.cycleSize
