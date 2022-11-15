@@ -60,7 +60,7 @@ class ListNode(var `val`: Int) {
         }
 
 
-    override fun toString() = "values:${this.values} cycleSize: ${this.cycleSize}"
+    override fun toString() = "${this.values}@${this.cycleSize}"
 
 
     fun hasCycle() = this.cycledMarkNode() !== null

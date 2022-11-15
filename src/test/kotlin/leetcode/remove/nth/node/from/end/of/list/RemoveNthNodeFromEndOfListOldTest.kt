@@ -1,11 +1,12 @@
-package leetcode
+package leetcode.remove.nth.node.from.end.of.list
 
+import leetcode.remove.nth.node.from.end.of.list.RemoveNthNodeFromEndOfListOld
 import leetcode.struct.listNodeOf
 import org.junit.jupiter.api.Test
 
-internal class RemoveNthNodeFromEndOfListTest {
+internal class RemoveNthNodeFromEndOfListOldTest {
 
-    private val core = RemoveNthNodeFromEndOfList()
+    private val core = RemoveNthNodeFromEndOfListOld()
 
     @Test
     fun testRemoveNthFromEnd1() {

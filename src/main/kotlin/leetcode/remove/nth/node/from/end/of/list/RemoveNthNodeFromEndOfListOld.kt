@@ -1,10 +1,10 @@
-package leetcode
+package leetcode.remove.nth.node.from.end.of.list
 
 import leetcode.struct.ListNode
 
 // https://leetcode.cn/problems/remove-nth-node-from-end-of-list/submissions/
 
-class RemoveNthNodeFromEndOfList {
+class RemoveNthNodeFromEndOfListOld {
     fun removeNthFromEnd(head: ListNode?, n: Int): ListNode? {
         if (head == null) {
             return head
