@@ -18,13 +18,12 @@ dependencies {
     testImplementation("org.assertj:assertj-core:3.23.1")
 }
 
-
 tasks.test {
     useTestNG()
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "11"
+    kotlinOptions.jvmTarget = "17"
 }
 
 application {
