@@ -1,25 +1,30 @@
 package leetcode.valid.parentheses
 
-import org.testng.annotations.AfterMethod
-import org.testng.annotations.BeforeMethod
+import org.assertj.core.api.Assertions.assertThat
 import org.testng.annotations.Test
-
 
 class ValidParenthesesTest {
 
     private val core = UseStack()
 
-    @BeforeMethod
-    fun setUp() {
-    }
-
-    @AfterMethod
-    fun tearDown() {
-    }
-
-    @Test(groups = ["valid"])
+    @Test(groups = ["isValid"])
     fun testIsValid01() {
         val s = "()"
         val res = this.core.isValid(s)
+        assertThat(res).describedAs("s=\"$s\"").isTrue()
+    }
+
+    @Test(groups = ["isValid"])
+    fun testIsValid02() {
+        val s = "()[]{}"
+        val res = this.core.isValid(s)
+        assertThat(res).describedAs("s=\"$s\"").isTrue()
+    }
+
+    @Test(groups = ["isValid"])
+    fun testIsValid03() {
+        val s = "(]"
+        val res = this.core.isValid(s)
+        assertThat(res).describedAs("s=\"$s\"").isFalse()
     }
 }

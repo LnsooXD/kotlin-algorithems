@@ -7,13 +7,12 @@ import java.util.*
 class UseStack : ValidParentheses {
     override fun isValid(s: String): Boolean {
         val stack = Stack<Char>()
-        val heads = charArrayOf('(', '[', ']')
-        val diffs = intArrayOf(1, 2)
+        val heads = charArrayOf('(', '[', '{')
 
         for (c in s) {
             if (c in heads) {
                 stack.push(c)
-            } else if (stack.isEmpty() || stack.pop() - c !in diffs) {
+            } else if (stack.isEmpty() || (c - stack.pop()) !in 1..2) {
                 return false
             }
         }
