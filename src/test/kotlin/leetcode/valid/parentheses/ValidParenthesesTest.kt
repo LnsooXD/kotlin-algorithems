@@ -7,6 +7,8 @@ import org.testng.annotations.Test
 
 class ValidParenthesesTest {
 
+    private val core = UseStack()
+
     @BeforeMethod
     fun setUp() {
     }
@@ -16,6 +18,8 @@ class ValidParenthesesTest {
     }
 
     @Test(groups = ["valid"])
-    fun testIsValid() {
+    fun testIsValid01() {
+        val s = "()"
+        val res = this.core.isValid(s)
     }
 }
