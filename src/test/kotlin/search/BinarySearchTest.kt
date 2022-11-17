@@ -1,7 +1,7 @@
 package search
 
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Test
+import org.testng.annotations.Test
 
 internal class BinarySearchTest {
     private val core = BinarySearch()

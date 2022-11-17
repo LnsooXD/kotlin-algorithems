@@ -2,7 +2,7 @@ package sort.impl
 
 import edu.princeton.cs.algs4.StdRandom
 import format
-import org.junit.jupiter.api.Test
+import org.testng.annotations.Test
 import sort.Sortable
 
 internal class SelectionSortTest {

@@ -2,7 +2,7 @@ package leetcode.remove.nth.node.from.end.of.list
 
 import leetcode.remove.nth.node.from.end.of.list.RemoveNthNodeFromEndOfListOld
 import leetcode.struct.listNodeOf
-import org.junit.jupiter.api.Test
+import org.testng.annotations.Test
 
 internal class RemoveNthNodeFromEndOfListOldTest {
 

@@ -2,7 +2,7 @@ package leetcode.sliding.window.maximum
 
 import edu.princeton.cs.algs4.In
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Test
+import org.testng.annotations.Test
 import java.io.File
 
 internal class SlidingWindowMaximumTest {

@@ -1,7 +1,7 @@
 package leetcode.longest.palindromic.substring
 
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Test
+import org.testng.annotations.Test
 
 internal class LongestPalindromicSubstringTest {
     private val core = CenterCore()

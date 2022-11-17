@@ -1,6 +1,6 @@
 package leetcode
 
-import org.junit.jupiter.api.Test
+import org.testng.annotations.Test
 
 internal class FourSumTest {
     private val fourSum = FourSum()

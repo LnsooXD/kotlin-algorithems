@@ -1,7 +1,7 @@
 package leetcode.integer.to.roman
 
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Test
+import org.testng.annotations.Test
 
 internal class IntegerToRomanTest {
     private val core = Table()

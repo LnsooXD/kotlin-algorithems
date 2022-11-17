@@ -1,7 +1,7 @@
 package leetcode.longest.substring.without.repeating.characters
 
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Test
+import org.testng.annotations.Test
 
 internal class LongestSubstringWithoutRepeatingCharactersITest {
 

@@ -1,6 +1,6 @@
 package leetcode.three.sum
 
-import org.junit.jupiter.api.Test
+import org.testng.annotations.Test
 
 internal class ThreeSumOldTest {
 

@@ -1,7 +1,7 @@
 package leetcode.sqrtx
 
 import org.assertj.core.api.Assertions
-import org.junit.jupiter.api.Test
+import org.testng.annotations.Test
 
 internal class NewtonMethodTest {
     private val core = NewtonMethod()

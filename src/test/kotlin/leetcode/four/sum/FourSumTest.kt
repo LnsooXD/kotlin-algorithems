@@ -1,7 +1,7 @@
 package leetcode.four.sum
 
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Test
+import org.testng.annotations.Test
 import kotlin.system.measureNanoTime
 
 internal class FourSumTest {

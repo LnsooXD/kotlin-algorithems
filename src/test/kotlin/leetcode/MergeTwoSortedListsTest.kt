@@ -1,7 +1,7 @@
 package leetcode
 
 import leetcode.struct.listNodeOf
-import org.junit.jupiter.api.Test
+import org.testng.annotations.Test
 
 internal class MergeTwoSortedListsTest {
 

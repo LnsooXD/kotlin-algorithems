@@ -2,7 +2,7 @@ package leetcode.remove.nth.node.from.end.of.list
 
 import leetcode.struct.listNodeOf
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Test
+import org.testng.annotations.Test
 
 internal class RemoveNthNodeFromEndOfListTest {
     private val core = ArrayIndexed()

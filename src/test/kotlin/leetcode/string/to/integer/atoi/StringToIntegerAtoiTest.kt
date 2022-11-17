@@ -1,7 +1,7 @@
 package leetcode.string.to.integer.atoi
 
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Test
+import org.testng.annotations.Test
 
 internal class StringToIntegerAtoiTest {
     private val core = Directly()

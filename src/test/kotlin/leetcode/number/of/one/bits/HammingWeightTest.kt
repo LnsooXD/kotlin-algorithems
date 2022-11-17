@@ -1,6 +1,6 @@
 package leetcode.number.of.one.bits
 
-import org.junit.jupiter.api.Test
+import org.testng.annotations.Test
 
 internal class HammingWeightTest {
 

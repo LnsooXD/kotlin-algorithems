@@ -1,7 +1,7 @@
 package leetcode.powx.n
 
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Test
+import org.testng.annotations.Test
 import kotlin.math.pow
 
 internal class PowXNTest {

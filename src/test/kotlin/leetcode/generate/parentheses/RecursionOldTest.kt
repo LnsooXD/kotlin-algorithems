@@ -1,6 +1,6 @@
 package leetcode.generate.parentheses
 
-import org.junit.jupiter.api.Test
+import org.testng.annotations.Test
 
 internal class RecursionOldTest {
     private val core = RecursionOld()

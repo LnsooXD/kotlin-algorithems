@@ -1,7 +1,7 @@
 package leetcode.best.time.to.buy.and.sell.stock.iii
 
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Test
+import org.testng.annotations.Test
 
 internal class BestTimeToBuyAndSellStockIIITest {
 

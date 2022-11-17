@@ -2,7 +2,7 @@ package leetcode.linked.list.cycle.ii
 
 import leetcode.struct.cycledListNodeOf
 import org.assertj.core.api.Assertions
-import org.junit.jupiter.api.Test
+import org.testng.annotations.Test
 
 internal class LinkedListCycleIITest {
 

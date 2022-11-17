@@ -2,7 +2,7 @@ package leetcode.three.sum.closest
 
 import leetcode.three.sum.closest.ThreeSumClosestOld
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Test
+import org.testng.annotations.Test
 
 internal class ThreeSumClosestOldTest {
 

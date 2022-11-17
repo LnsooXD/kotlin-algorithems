@@ -1,7 +1,7 @@
 package leetcode.palindrome.number
 
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Test
+import org.testng.annotations.Test
 
 internal class PalindromeNumberTest {
     private val core = PureNumbers()

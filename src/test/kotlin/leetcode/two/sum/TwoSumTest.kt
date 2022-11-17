@@ -1,7 +1,7 @@
 package leetcode.two.sum
 
 import org.assertj.core.api.Assertions
-import org.junit.jupiter.api.Test
+import org.testng.annotations.Test
 
 internal class TwoSumTest {
 

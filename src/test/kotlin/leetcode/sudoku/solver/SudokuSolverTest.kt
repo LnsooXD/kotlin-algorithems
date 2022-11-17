@@ -3,7 +3,7 @@ package leetcode.sudoku.solver
 import leetcode.valid.sudoku.FullBits
 import leetcode.valid.sudoku.ValidSudoku
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Test
+import org.testng.annotations.Test
 
 internal class SudokuSolverTest {
 

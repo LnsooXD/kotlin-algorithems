@@ -3,7 +3,7 @@ package leetcode.binary.tree.level.order.traversal
 import leetcode.struct.TreeNode
 import leetcode.struct.treeOf
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Test
+import org.testng.annotations.Test
 
 internal class BinaryTreeLevelOrderTraversalTest {
     private val core = DFS()

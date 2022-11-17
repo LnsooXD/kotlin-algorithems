@@ -1,7 +1,7 @@
 package leetcode.three.sum.closest
 
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Test
+import org.testng.annotations.Test
 
 internal class ThreeSumClosestTest {
     private val core = ThreePointers()

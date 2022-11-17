@@ -1,7 +1,7 @@
 package leetcode.letter.combinations.of.a.phone.number
 
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Test
+import org.testng.annotations.Test
 
 internal class LetterCombinationsOfAPhoneNumberTest {
     private val core = Rude()
