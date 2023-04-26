@@ -1,1 +1,1 @@
-# Practice Algorithems with Kotlin
+# Practicing Algorithems with Kotlin
